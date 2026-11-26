@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>吳思穎 Alice Wu | 應徵 justfont 行政營運專員</title>
     
-    <!-- Google Fonts: Comfortaa (標題英文字體), Quicksand (內文英文字體) -->
+    <!-- Google Fonts: Comfortaa & Quicksand -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
@@ -22,25 +22,25 @@
                 extend: {
                     colors: {
                         rainbow: {
-                            red: '#FF0055',       // 霓虹紅
-                            redDark: '#E11D48',   // 淺色質感緋紅
-                            orange: '#FF6B00',    // 霓虹橙
-                            orangeDark: '#EA580C',// 淺色暖橙
-                            yellow: '#FFD100',    // 霓虹黃
-                            yellowDark: '#D97706',// 淺色琥珀金黃
-                            green: '#00F5D4',     // 霓虹綠
-                            greenDark: '#0D9488', // 淺色翡翠綠
-                            blue: '#0088FF',      // 霓虹藍
-                            blueDark: '#2563EB',  // 淺色皇家藍
-                            purple: '#AF40FF',    // 霓虹紫
-                            purpleDark: '#9333EA',// 淺色寶石紫
+                            red: '#FF0055',
+                            redDark: '#E11D48',
+                            orange: '#FF6B00',
+                            orangeDark: '#EA580C',
+                            yellow: '#FFD100',
+                            yellowDark: '#D97706',
+                            green: '#00F5D4',
+                            greenDark: '#0D9488',
+                            blue: '#0088FF',
+                            blueDark: '#2563EB',
+                            purple: '#AF40FF',
+                            purpleDark: '#9333EA',
                         },
                         jf: {
                             coral: '#FF4D4D',
                             teal: '#00A896',
                             sand: '#F7F4EF',
-                            dark: '#090C10',
-                            cardDark: '#111622',
+                            dark: '#0A0D14',
+                            cardDark: '#121722',
                         }
                     },
                     fontFamily: {
@@ -48,12 +48,12 @@
                         body: ['Quicksand', 'OpenHuninn', 'GenSenRounded', 'sans-serif'],
                     },
                     boxShadow: {
-                        'neon-red': '0 0 25px rgba(255, 0, 85, 0.45)',
-                        'neon-yellow': '0 0 25px rgba(255, 209, 0, 0.45)',
-                        'neon-green': '0 0 25px rgba(0, 245, 212, 0.45)',
-                        'neon-blue': '0 0 25px rgba(0, 136, 255, 0.45)',
-                        'neon-orange': '0 0 25px rgba(255, 107, 0, 0.45)',
-                        'neon-white': '0 0 20px rgba(255, 255, 255, 0.4)',
+                        'neon-red': '0 0 20px rgba(255, 0, 85, 0.35)',
+                        'neon-yellow': '0 0 20px rgba(255, 209, 0, 0.35)',
+                        'neon-green': '0 0 20px rgba(0, 245, 212, 0.35)',
+                        'neon-blue': '0 0 20px rgba(0, 136, 255, 0.35)',
+                        'neon-orange': '0 0 20px rgba(255, 107, 0, 0.35)',
+                        'card-light': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03)',
                     }
                 }
             }
@@ -100,633 +100,796 @@
 
         body {
             font-family: 'Quicksand', 'OpenHuninn', 'GenSenRounded', sans-serif;
-            letter-spacing: 0.025em;
-            font-weight: 500;
+            letter-spacing: 0.02em;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
-        .pill-badge {
-            border-radius: 9999px;
-            padding: 0.4rem 1.1rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
+        /* 實心彩色圓形節點（無任何白邊） */
+        .solid-dot-red {
+            background-color: #FF0055;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .solid-dot-orange {
+            background-color: #FF6B00;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .solid-dot-yellow {
+            background-color: #FFD100;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .solid-dot-green {
+            background-color: #00F5D4;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .solid-dot-blue {
+            background-color: #0088FF;
+            border: none !important;
+            box-shadow: none !important;
         }
 
-        .speech-bubble {
-            position: relative;
-            border-radius: 1.25rem;
-            padding: 1.5rem 1.75rem;
-            font-weight: 700;
-            transition: all 0.3s ease;
+        /* 淺色模式下絕對不使用發光效果 */
+        html:not(.dark) .solid-dot-red { background-color: #E11D48; }
+        html:not(.dark) .solid-dot-orange { background-color: #EA580C; }
+        html:not(.dark) .solid-dot-yellow { background-color: #D97706; }
+        html:not(.dark) .solid-dot-green { background-color: #0D9488; }
+        html:not(.dark) .solid-dot-blue { background-color: #2563EB; }
+
+        /* 卡片 Hover 時的外框對應色亮起（淺色為高彩邊框，深色為同色外框亮起） */
+        .hover-card-blue:hover {
+            border-color: #2563EB !important;
         }
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 28px;
-            border-width: 10px 10px 0;
-            border-style: solid;
-            display: block;
-            width: 0;
-            transition: all 0.3s ease;
+        .dark .hover-card-blue:hover {
+            border-color: #0088FF !important;
+            box-shadow: 0 0 20px rgba(0, 136, 255, 0.25);
         }
 
-        /* 深色模式氣泡 */
-        .dark .speech-bubble {
-            background: #ffffff;
-            color: #0f172a;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+        .hover-card-green:hover {
+            border-color: #0D9488 !important;
         }
-        .dark .speech-bubble::after {
-            border-color: #ffffff transparent;
+        .dark .hover-card-green:hover {
+            border-color: #00F5D4 !important;
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.25);
         }
 
-        /* 淺色模式氣泡 (純淨無發光) */
-        html:not(.dark) .speech-bubble {
-            background: #0f172a;
-            color: #ffffff;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+        .hover-card-yellow:hover {
+            border-color: #D97706 !important;
         }
-        html:not(.dark) .speech-bubble::after {
-            border-color: #0f172a transparent;
+        .dark .hover-card-yellow:hover {
+            border-color: #FFD100 !important;
+            box-shadow: 0 0 20px rgba(255, 209, 0, 0.25);
         }
 
-        /* 卡片樣式 */
-        .glow-card {
-            border-radius: 1.25rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .hover-card-red:hover {
+            border-color: #E11D48 !important;
         }
-        
-        .dark .glow-card {
-            background-color: #0c1017;
-            border: 1px solid #1a2230;
-        }
-        .dark .glow-card:hover {
-            border-color: #00F5D4;
-            box-shadow: 0 0 30px rgba(0, 245, 212, 0.25);
-            transform: translateY(-3px);
-        }
-        .dark .glow-card.card-red:hover {
-            border-color: #FF0055;
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.3);
-        }
-        .dark .glow-card.card-yellow:hover {
-            border-color: #FFD100;
-            box-shadow: 0 0 30px rgba(255, 209, 0, 0.3);
-        }
-        .dark .glow-card.card-green:hover {
-            border-color: #00F5D4;
-            box-shadow: 0 0 30px rgba(0, 245, 212, 0.3);
-        }
-        .dark .glow-card.card-blue:hover {
-            border-color: #0088FF;
-            box-shadow: 0 0 30px rgba(0, 136, 255, 0.3);
-        }
-        .dark .glow-card.card-orange:hover {
-            border-color: #FF6B00;
-            box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
+        .dark .hover-card-red:hover {
+            border-color: #FF0055 !important;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.25);
         }
 
-        html:not(.dark) .glow-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        .hover-card-orange:hover {
+            border-color: #EA580C !important;
         }
-        html:not(.dark) .glow-card:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transform: translateY(-3px);
-        }
-        html:not(.dark) .glow-card.card-red:hover {
-            border-color: #E11D48;
-            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.12);
-        }
-        html:not(.dark) .glow-card.card-yellow:hover {
-            border-color: #D97706;
-            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.12);
-        }
-        html:not(.dark) .glow-card.card-green:hover {
-            border-color: #0D9488;
-            box-shadow: 0 10px 25px rgba(13, 148, 136, 0.12);
-        }
-        html:not(.dark) .glow-card.card-blue:hover {
-            border-color: #2563EB;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12);
-        }
-        html:not(.dark) .glow-card.card-orange:hover {
-            border-color: #EA580C;
-            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.12);
+        .dark .hover-card-orange:hover {
+            border-color: #FF6B00 !important;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.25);
         }
 
-        /* 滾動條樣式 */
+        /* 圖片放大效果與滑鼠提示 */
+        .zoomable-img {
+            cursor: zoom-in;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .zoomable-img:hover {
+            opacity: 0.95;
+            transform: scale(1.01);
+        }
+
+        /* 自定義捲軸 */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
         }
         .dark ::-webkit-scrollbar-track {
-            background: #000000;
+            background: #0a0d14;
         }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #21262d;
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
             border-radius: 4px;
         }
-        html:not(.dark) ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        html:not(.dark) ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
             border-radius: 4px;
         }
     </style>
 </head>
-<body class="bg-black text-slate-100 dark:bg-black dark:text-slate-100 selection:bg-rainbow-red selection:text-white font-medium">
 
-    <!-- 頂部導覽列 Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 bg-black/85 dark:bg-black/85 backdrop-blur-md border-b border-gray-900 dark:border-gray-900 transition-colors" id="main-nav">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
+<body class="bg-[#f8fafc] text-slate-800 dark:bg-[#07090e] dark:text-slate-100 font-medium selection:bg-rose-500 selection:text-white">
+
+    <!-- 頂端導覽列 -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-[#07090e]/85 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors shadow-sm dark:shadow-none">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3.5 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full border-2 border-rainbow-red flex items-center justify-center font-heading font-black text-rainbow-red brand-logo-circle transition-all duration-300">
+                <div class="w-10 h-10 rounded-full border-2 border-rose-500 dark:border-rainbow-red flex items-center justify-center font-heading font-black text-rose-500 dark:text-rainbow-red text-base">
                     吳
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-heading text-lg font-bold tracking-wider text-white dark:text-white group-hover:text-rainbow-red transition-colors nav-title">
-                        吳思穎 <span class="text-rainbow-red text-sm font-semibold brand-en-text">Alice Wu</span>
+                <div>
+                    <span class="font-heading text-lg font-bold tracking-wider text-slate-900 dark:text-white group-hover:text-rose-500 dark:group-hover:text-rainbow-red transition-colors">
+                        吳思穎 Alice Wu
                     </span>
-                    <span class="text-[11px] text-gray-400 font-medium -mt-0.5">應徵 justfont 行政營運專員</span>
+                    <span class="block text-xs text-rose-600 dark:text-rainbow-red font-semibold">應徵 justfont 行政營運專員</span>
                 </div>
             </a>
-
-            <!-- Nav Links & 模式切換按鈕 -->
-            <div class="flex items-center gap-6 md:gap-8">
-                <div class="hidden md:flex items-center gap-8 font-bold text-gray-300 dark:text-gray-300 text-sm nav-links">
-                    <a href="#fit" class="hover:text-rainbow-orange transition-colors">職務契合亮點</a>
-                    <a href="#competencies" class="hover:text-rainbow-yellow transition-colors">5大營運模組</a>
-                    <a href="#experience" class="hover:text-rainbow-green transition-colors">學經歷歷程</a>
-                    <a href="#why-jf" class="hover:text-rainbow-blue transition-colors">為什麼是 justfont</a>
-                    <a href="#contact" class="pill-badge bg-white dark:bg-white text-black hover:bg-gray-200 transition-all hover:scale-105 font-black contact-nav-btn">
-                        <i class="fa-solid fa-paper-plane mr-2"></i> 聯絡我
-                    </a>
+            
+            <div class="flex items-center gap-6 sm:gap-8">
+                <div class="hidden md:flex items-center gap-7 font-bold text-slate-600 dark:text-slate-300 text-sm">
+                    <a href="#self-intro" class="hover:text-rose-600 dark:hover:text-rainbow-red transition-colors">自我介紹</a>
+                    <a href="#admin-skills" class="hover:text-amber-600 dark:hover:text-rainbow-yellow transition-colors">行政工作實績</a>
+                    <a href="#experience" class="hover:text-teal-600 dark:hover:text-rainbow-green transition-colors">學經歷時間軸</a>
+                    <a href="#qualifications" class="hover:text-blue-600 dark:hover:text-rainbow-blue transition-colors">證照與技能</a>
                 </div>
 
-                <!-- ☀️ / 🌙 一鍵切換深淺模式按鈕 -->
-                <button id="theme-toggle" class="w-10 h-10 rounded-full border-2 border-gray-700 dark:border-gray-700 flex items-center justify-center text-gray-300 dark:text-gray-300 transition-all duration-300" title="切換深色 / 淺色模式">
-                    <i class="fa-solid fa-sun text-base hidden dark:block text-rainbow-yellow"></i>
-                    <i class="fa-solid fa-moon text-base block dark:hidden text-slate-700"></i>
-                </button>
+                <div class="flex items-center gap-3">
+                    <!-- 深淺色切換開關 -->
+                    <button id="theme-toggle" type="button" aria-label="切換深淺色模式" 
+                        class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-amber-400 hover:scale-105 transition-all">
+                        <i id="theme-icon" class="fas fa-sun text-base"></i>
+                    </button>
+
+                    <a href="#contact" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-black dark:hover:bg-slate-200 px-5 py-2 text-sm font-bold transition-all hover:scale-105">
+                        <i class="fas fa-envelope text-xs"></i> 聯絡我
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- 01. Hero Section 封面首屏 -->
-    <section class="min-h-screen flex items-center pt-36 pb-20 px-6 relative overflow-hidden bg-black dark:bg-black transition-colors" id="hero-sec">
-        <!-- 背景裝飾微光 -->
-        <div class="absolute top-1/4 right-10 w-96 h-96 bg-rainbow-red/10 rounded-full blur-3xl pointer-events-none hidden dark:block"></div>
-        <div class="absolute bottom-10 left-10 w-80 h-80 bg-rainbow-yellow/10 rounded-full blur-3xl pointer-events-none hidden dark:block"></div>
-        
-        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <!-- Hero / 首頁區塊：基本資料與投遞信草稿 -->
+    <header class="pt-32 pb-16 px-5 sm:px-8 border-b border-slate-200 dark:border-slate-800/80 bg-gradient-to-b from-white via-slate-50 to-[#f8fafc] dark:from-[#0a0d16] dark:via-[#07090e] dark:to-[#07090e]">
+        <div class="max-w-4xl mx-auto space-y-8">
             
-            <!-- 左側核心介紹 -->
-            <div class="lg:col-span-8 space-y-8">
-                
-                <!-- 標籤 -->
-                <div class="inline-flex items-center gap-2">
-                    <span class="pill-badge bg-rainbow-red/10 border border-rainbow-red text-rainbow-red text-xs uppercase tracking-widest px-4 py-1.5 font-bold eyebrow-red">
-                        <i class="fa-solid fa-font mr-1.5"></i> Application for justfont
-                    </span>
-                    <span class="text-xs text-gray-400 font-semibold hidden sm:inline">／ 行政營運專員</span>
-                </div>
-
-                <!-- 主標題群組 (源泉圓體 Heavy 800) -->
-                <div class="space-y-4">
-                    <h1 class="font-heading text-4xl sm:text-6xl font-black text-white dark:text-white tracking-tight leading-tight hero-h1">
-                        吳思穎 <span class="font-heading text-2xl sm:text-4xl text-rainbow-red font-bold ml-2 hero-name-en">Alice Wu</span>
+            <!-- 個人抬頭與應徵職位標籤 -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-950/40 dark:text-rose-300 dark:border-rose-900/60 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-rose-500"></span> 應徵職缺｜justfont 行政營運專員
+                    </div>
+                    <h1 class="font-heading text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+                        吳思穎 <span class="text-2xl sm:text-3xl text-rose-600 dark:text-rainbow-red font-bold font-heading">Alice Wu</span>
                     </h1>
-                    <h2 class="font-heading text-xl sm:text-3xl font-extrabold text-rainbow-yellow dark:text-rainbow-yellow leading-snug pt-1 hero-subtitle">
-                        化繁為簡的專案執行夥伴。
-                    </h2>
-                </div>
-
-                <div class="space-y-4 text-gray-200 dark:text-gray-200 text-base sm:text-lg leading-relaxed max-w-2xl font-medium hero-body-text">
-                    <p>
-                        具備 5 年 8 個月顧問專案執行與行政營運經歷，專注於帳務與核銷、試算表與資料管理、流程文件標準化、AI 與自動化導入評估，以及第一線客戶服務與溝通。
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2 font-medium">
+                        約 6 年專案行政與活動營運經驗・建立清楚重複的流程・法規轉譯與實務自動化
                     </p>
                 </div>
-
-                <!-- 核心行動呼籲按鈕 -->
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="slide.html" class="pill-badge bg-rainbow-red text-white px-7 py-3.5 font-bold hover:shadow-neon-red hover:scale-105 transition-all text-sm hero-btn-red">
-                        <i class="fa-solid fa-file-powerpoint mr-2"></i> 查看單頁重點簡報
+                
+                <!-- 聯絡小資訊牌 -->
+                <div class="flex flex-wrap sm:flex-col items-start sm:items-end gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    <a href="tel:0958321139" class="inline-flex items-center gap-2 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                        <i class="fas fa-phone text-rose-500"></i> 0958-321-139
                     </a>
-                    <a href="#competencies" class="pill-badge bg-transparent border-2 border-rainbow-yellow text-rainbow-yellow px-7 py-3.5 font-bold hover:bg-rainbow-yellow hover:text-black hover:shadow-neon-yellow transition-all text-sm hero-btn-yellow">
-                        <i class="fa-solid fa-layer-group mr-2"></i> 瀏覽 5 大營運實務
+                    <a href="mailto:ichbinalicewu35@gmail.com" class="inline-flex items-center gap-2 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                        <i class="fas fa-envelope text-rose-500"></i> ichbinalicewu35@gmail.com
                     </a>
-                    <a href="#experience" class="pill-badge bg-transparent border-2 border-rainbow-green text-rainbow-green px-7 py-3.5 font-bold hover:bg-rainbow-green hover:text-black hover:shadow-neon-green transition-all text-sm hero-btn-green">
-                        <i class="fa-solid fa-timeline mr-2"></i> 學經歷脈絡
-                    </a>
+                    <span class="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                        <i class="fas fa-location-dot text-rose-500"></i> 新北市土城區
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 text-xs font-semibold">
+                        <i class="fas fa-check-circle text-xs"></i> 待業中（錄取後一週可上班）
+                    </span>
                 </div>
-
             </div>
 
-            <!-- 右側：針對職缺四大亮點快覽卡片 -->
-            <div class="lg:col-span-4 space-y-4">
-                <div class="glow-card p-6 border-l-4 border-l-rainbow-yellow space-y-4 bg-[#0a0f18] dark:bg-[#0a0f18]">
-                    <div class="text-xs font-bold text-rainbow-yellow uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-check-double"></i> 職缺技能摘要
+            <!-- 投遞信（草稿）容器：如同精緻書信，如實呈現使用者真實文字 -->
+            <div id="self-intro" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0d121c] p-6 sm:p-9 shadow-card-light dark:shadow-none space-y-6 relative overflow-hidden">
+                <!-- 裝飾邊角條 -->
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-rose-500 via-amber-400 to-teal-400"></div>
+                
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+                    <div class="flex items-center gap-2 text-base sm:text-lg font-bold text-rose-600 dark:text-rainbow-red font-heading">
+                        <i class="fas fa-paper-plane text-rose-500 dark:text-rainbow-red"></i>
+                        <span>自我介紹</span>
                     </div>
-                    <ul class="text-xs text-gray-300 space-y-3 font-medium">
-                        <li class="flex items-start gap-2.5">
-                            <span class="text-rainbow-red font-bold text-sm">•</span>
-                            <div>
-                                <strong class="text-white font-bold">帳務與核銷</strong>：負責年度十多萬元、約100筆核銷；自訂雲端記帳範本，時間縮短至半天內，憑證可追溯。
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <span class="text-rainbow-yellow font-bold text-sm">•</span>
-                            <div>
-                                <strong class="text-white font-bold">試算表與資料管理</strong>：XLOOKUP、合併列印減少手寫錯誤；設計四層自動計算表處理千份問卷。
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <span class="text-rainbow-green font-bold text-sm">•</span>
-                            <div>
-                                <strong class="text-white font-bold">AI 與自動化</strong>：Dify 工作流建置、RAG 3,000筆測試達90%準確率；務實評估程式自動化。
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <span class="text-rainbow-blue font-bold text-sm">•</span>
-                            <div>
-                                <strong class="text-white font-bold">活動營運與溝通</strong>：5～6年電話代班與主動外撥、實體講師；個資最小揭露原則。
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="pt-3 border-t border-gray-800 text-[11px] text-gray-400">
-                        輔大中文 ＆ 德文雙學士，具備文字敏感度與邏輯思維。
+                    <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                        [行政營運專員] 吳思穎
+                    </span>
+                </div>
+
+                <div class="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-200 leading-relaxed space-y-4 text-sm sm:text-base">
+                    <p class="font-semibold text-slate-900 dark:text-white">您好，</p>
+
+                    <p>　　我是吳思穎 Alice，有約6年專案行政與活動營運經驗。看到 justfont 徵求行政營運專員，想誠摯地投遞應徵。</p>
+
+                    <p>　　我對 justfont 的認識，是從使用粉圓體開始的。Google 文件能用粉圓時，我非常開心；後來也追蹤了Instagram，蘭陽黑體的「信任遊戲」短片讓我印象深刻。我喜歡在穩定架構下又帶有個人風格的字體，也相信不同情境適合用不同字體表達情緒，所以選擇越多越好。小時候的硬筆字比賽多半以標楷體為標準，我的美感也是很晚才開始累積，所以特別珍惜 justfont 讓更多人接觸到多元字體的努力。</p>
+
+                    <p>　　在過去的工作中，我習慣把重複、容易出錯的事情整理成清楚的流程。例如我設計了說明會核銷的試算表範本，讓年底整理時間從約一個工作天縮短到半天內，後來被會計推薦給其他專案參考；也設計過前後測成效統計表，讓每場結束就能看見結果並調整課程。參與專案 AI 客服導入時，我也學到什麼工作適合交給 AI、什麼工作不必，曾建議某個名單篩選流程用調整邏輯與程式自動化處理即可，確保名單的正確性可控，不必全部交給 LLM，意見後來獲得甲方採納。</p>
+
+                    <p>　　我的客服經驗以電話與面對面為主，文字客服、收款與開立發票、合約審閱的實務經驗較少，這幾項我很願意學習，也習慣在遇到沒做過的事時先查資料，再整理成可重複使用的做法。</p>
+
+                    <p>　　隨信附上履歷，期待有機會與您現場面談。</p>
+
+                    <div class="pt-4 text-right">
+                        <p class="text-slate-500 dark:text-slate-400">祝 徵才順利</p>
+                        <p class="font-heading font-bold text-lg text-slate-900 dark:text-white mt-1">吳思穎 Alice</p>
                     </div>
                 </div>
             </div>
 
         </div>
-    </section>
+    </header>
 
-    <!-- 02. 5大特定技能模組 (Competencies for justfont) -->
-    <section id="competencies" class="py-28 px-6 border-t border-gray-900 dark:border-gray-900 bg-[#040608] dark:bg-[#040608] transition-colors sec-bg-1">
-        <div class="max-w-6xl mx-auto space-y-16">
+    <!-- Section 2: 針對想投的職缺內容補充的特定技能與經歷細節（含實際截圖） -->
+    <section id="admin-skills" class="py-20 px-5 sm:px-8 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto space-y-12">
             
-            <!-- 區塊標題群組 -->
-            <div class="text-center space-y-6">
-                <div>
-                    <span class="pill-badge bg-rainbow-orange/10 border border-rainbow-orange text-rainbow-orange text-xs uppercase tracking-widest px-4 py-1.5 font-bold">
-                        Detailed Competencies
-                    </span>
-                </div>
-                <h3 class="font-heading text-3xl sm:text-5xl font-black text-white dark:text-white tracking-wide sec-title">
-                    5 大營運實務與落地細節
-                </h3>
-                <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed pt-2 font-medium sec-subtitle">
-                    針對 justfont 行政營運專員需求，逐一呈現過去在帳務、試算表、文管、AI 導入與客服上的具體實績
+            <div class="text-center space-y-3">
+                <h2 class="font-heading text-3xl sm:text-4xl font-black text-amber-600 dark:text-rainbow-yellow tracking-wide">
+                    行政工作實績
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+                    環資國際｜專案執行（約 6 年）實務紀錄，包含實際設計之記帳範本、前後測四層試算表、Word合併列印及 AI 客服測試分享簡報。
                 </p>
             </div>
 
-            <!-- 5 大卡片 (網格 + 展開細節) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-10">
 
-                <!-- 模組 1: 帳務與核銷 (黃色) -->
-                <div class="glow-card card-yellow p-6 flex flex-col justify-between border-t-2 border-t-rainbow-yellow space-y-4">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="pill-badge bg-rainbow-yellow/10 border border-rainbow-yellow text-rainbow-yellow text-xs font-bold">
-                                帳務與核銷
-                            </span>
-                            <span class="text-xs text-gray-400 font-medium">環資國際</span>
+                <!-- 1. 帳務與核銷 -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 sm:p-8 shadow-card-light dark:shadow-none hover-card-orange transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-950/60 dark:text-rainbow-orange flex items-center justify-center font-bold text-base">
+                            <i class="fas fa-file-invoice-dollar"></i>
                         </div>
-                        <h4 class="font-heading text-lg font-bold text-white dark:text-white card-h4">
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                             帳務與核銷
-                        </h4>
-                        <div class="text-xs text-gray-300 space-y-2.5 leading-relaxed card-body">
+                        </h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                        <div class="lg:col-span-6 space-y-3.5 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                             <p>
-                                負責年度說明會（10～15 場）經費的預算編列、預支、請款與核銷，涵蓋場地、餐盒、交通、住宿、郵寄等項目，年度總額約十多萬元、核銷細項約 100 筆。
+                                　　負責年度說明會（10～15 場）經費的預算編列、預支、請款與核銷，涵蓋場地、餐盒、交通、住宿、郵寄等項目，年度總額約 10 萬元、核銷細項約 100 筆。
                             </p>
                             <p>
-                                自行設計雲端試算表記帳範本並附填寫說明，由經手同事於活動期間逐筆登錄金額與憑證轉交路徑；年底核銷整理時間由約一個工作天縮短至半天內，憑證遺失時可追溯。範本經會計推薦給其他專案參考。
+                                　　自行設計雲端試算表記帳範本並附填寫說明，由經手同事於活動期間逐筆登錄金額與憑證轉手人員；年底核銷整理時間由約一個工作天縮短至半天內，憑證遺失時可追溯。範本經會計推薦給其他專案參考。
                             </p>
+                            <div class="pt-2 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                                <i class="fas fa-info-circle text-orange-500"></i>
+                                <span>右側截圖為雲端記帳範本（點擊可放大檢視「隨時掌握預算剩餘金額」機制）</span>
+                            </div>
+                        </div>
+
+                        <!-- 截圖 1 -->
+                        <div class="lg:col-span-6">
+                            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#111622] group">
+                                <img src="./images/image1.jpeg" alt="雲端試算表記帳範本" class="w-full h-auto object-cover zoomable-img" onclick="openLightbox('./images/image1.jpeg', '雲端試算表記帳範本：隨時掌握預算剩餘金額、核銷進度與憑證流向')">
+                                <div class="p-3 bg-white dark:bg-[#10141e] border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                                    <span><i class="fas fa-table mr-1 text-orange-500"></i> 雲端試算表記帳範本（隨時掌握預算剩餘金額）</span>
+                                    <span class="text-orange-600 dark:text-rainbow-orange font-semibold cursor-pointer" onclick="openLightbox('./images/image1.jpeg', '雲端試算表記帳範本：隨時掌握預算剩餘金額、核銷進度與憑證流向')">點擊放大 <i class="fas fa-search-plus ml-0.5"></i></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 模組 2: 試算表與資料管理 (綠色) -->
-                <div class="glow-card card-green p-6 flex flex-col justify-between border-t-2 border-t-rainbow-green space-y-4">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="pill-badge bg-rainbow-green/10 border border-rainbow-green text-rainbow-green text-xs font-bold">
-                                試算表與資料管理
-                            </span>
-                            <span class="text-xs text-gray-400 font-medium">環資國際</span>
+                <!-- 2. 試算表與資料管理 -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 sm:p-8 shadow-card-light dark:shadow-none hover-card-yellow transition-all space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-rainbow-yellow flex items-center justify-center font-bold text-base">
+                            <i class="fas fa-file-excel"></i>
                         </div>
-                        <h4 class="font-heading text-lg font-bold text-white dark:text-white card-h4">
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                             試算表與資料管理
-                        </h4>
-                        <div class="text-xs text-gray-300 space-y-2.5 leading-relaxed card-body">
+                        </h3>
+                    </div>
+
+                    <!-- 子項目 A: 郵寄資料與 Word 合併列印 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start border-b border-slate-100 dark:border-slate-800/80 pb-6">
+                        <div class="lg:col-span-6 space-y-3 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> excel資料庫與 Word 合併列印批次作業
+                            </h4>
                             <p>
-                                具備 Excel 樞紐分析、IF、COUNTIF、XLOOKUP使用經驗；建立郵寄資料主清單搭配 Word 合併列印，批次產出活動場地包裹標籤、獎品寄送與行前通知，整合原本分散於各資料夾的重複資料，減少批次寄件的手寫錯誤。
+                                　　具備 Excel 樞紐分析、IF、COUNTIF、XLOOKUP使用經驗；建立郵寄資料主清單搭配 Word 合併列印，批次產出活動場地包裹標籤、獎品寄送與行前通知，整合原本分散於各資料夾的重複資料，減少批次處理的人為錯誤。
                             </p>
+                        </div>
+                        <div class="lg:col-span-6">
+                            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#111622]">
+                                <img src="./images/image2.jpeg" alt="Word 合併列印行前通知" class="w-full h-auto object-cover zoomable-img" onclick="openLightbox('./images/image2.jpeg', 'Word 合併列印行前通知')">
+                                <div class="p-3 bg-white dark:bg-[#10141e] border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                                    <span><i class="fas fa-envelope-open-text mr-1 text-amber-500"></i> Word 合併列印行前通知</span>
+                                    <span class="text-amber-600 dark:text-rainbow-yellow font-semibold cursor-pointer" onclick="openLightbox('./images/image2.jpeg', 'Word 合併列印行前通知')">點擊放大 <i class="fas fa-search-plus ml-0.5"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 子項目 B: 學習成效四層試算表 (含 4 張截圖) -->
+                    <div class="space-y-4">
+                        <div class="space-y-2 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> 說明會學習成效統計表（四層試算表）
+                            </h4>
                             <p>
-                                設計說明會學習成效統計表（年約 1,000 份問卷）：以自編抽獎流水號串接前後測資料，建立「貼入原始資料即自動計算」的四層試算表，訂定資料比對規則（無法對應者人工檢視後剔除）；成效結果由年底統整提前至每場結束即可得出，並依各題答錯率調整下一場講課重點；完成操作說明並交接。
+                                　　設計說明會學習成效統計表（年約 1,000 份問卷）：以自編抽獎流水號串接前後測資料，建立「貼入原始資料即自動計算」的四層試算表，訂定資料比對規則（無法對應者人工檢視後剔除）；成效結果由年底統整提前至每場結束即可得出，並依各題答錯率調整下一場講課重點；完成操作說明並交接。
                             </p>
+                        </div>
+
+                        <!-- 4 張試算表展示卡片 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                            <div class="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] flex flex-col">
+                                <img src="./images/image3.jpeg" alt="圖一：Google問卷原始資料" class="w-full h-36 object-cover zoomable-img" onclick="openLightbox('./images/image3.jpeg', '圖一：Google 問卷原始資料（自編抽獎流水號）')">
+                                <div class="p-2.5 text-xs text-slate-600 dark:text-slate-300 font-medium border-t border-slate-100 dark:border-slate-800">
+                                    <span class="font-bold text-amber-600 dark:text-amber-400 block mb-0.5">圖一</span>
+                                    Google 問卷原始資料
+                                </div>
+                            </div>
+
+                            <div class="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] flex flex-col">
+                                <img src="./images/image4.jpeg" alt="圖二：會後原始資料" class="w-full h-36 object-cover zoomable-img" onclick="openLightbox('./images/image4.jpeg', '圖二：會後原始資料彙整')">
+                                <div class="p-2.5 text-xs text-slate-600 dark:text-slate-300 font-medium border-t border-slate-100 dark:border-slate-800">
+                                    <span class="font-bold text-amber-600 dark:text-amber-400 block mb-0.5">圖二</span>
+                                    會後原始資料彙整
+                                </div>
+                            </div>
+
+                            <div class="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] flex flex-col">
+                                <img src="./images/image5.jpeg" alt="圖三：Kahoot資料對錯判定" class="w-full h-36 object-cover zoomable-img" onclick="openLightbox('./images/image5.jpeg', '圖三：Kahoot! 資料對錯自動判定')">
+                                <div class="p-2.5 text-xs text-slate-600 dark:text-slate-300 font-medium border-t border-slate-100 dark:border-slate-800">
+                                    <span class="font-bold text-amber-600 dark:text-amber-400 block mb-0.5">圖三</span>
+                                    Kahoot! 資料對錯判定
+                                </div>
+                            </div>
+
+                            <div class="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] flex flex-col">
+                                <img src="./images/image6.jpeg" alt="圖四：前後測結果一覽表" class="w-full h-36 object-cover zoomable-img" onclick="openLightbox('./images/image6.jpeg', '圖四：前後測結果一覽表（XLOOKUP 自動計算串接）')">
+                                <div class="p-2.5 text-xs text-slate-600 dark:text-slate-300 font-medium border-t border-slate-100 dark:border-slate-800">
+                                    <span class="font-bold text-amber-600 dark:text-amber-400 block mb-0.5">圖四</span>
+                                    前後測結果一覽表 (XLOOKUP)
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 模組 3: 流程、文件與檔案 (橙色) -->
-                <div class="glow-card card-orange p-6 flex flex-col justify-between border-t-2 border-t-rainbow-orange space-y-4">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="pill-badge bg-rainbow-orange/10 border border-rainbow-orange text-rainbow-orange text-xs font-bold">
-                                流程、文件與檔案
-                            </span>
-                            <span class="text-xs text-gray-400 font-medium">德利威 / 環資</span>
+                <!-- 3. 流程、文件與檔案 -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 sm:p-8 shadow-card-light dark:shadow-none hover-card-blue transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:text-rainbow-blue flex items-center justify-center font-bold text-base">
+                            <i class="fas fa-folder-tree"></i>
                         </div>
-                        <h4 class="font-heading text-lg font-bold text-white dark:text-white card-h4">
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                             流程、文件與檔案
-                        </h4>
-                        <div class="text-xs text-gray-300 space-y-2.5 leading-relaxed card-body">
+                        </h3>
+                    </div>
+
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
+                                <i class="fas fa-sitemap text-blue-500 text-xs"></i> 檔案分層與版本命名規則
+                            </h4>
                             <p>
-                                自訂檔案分層與版本規則（年度＼工項＼文件標題＼編輯日期＼版本），為所做工作撰寫備忘與交接說明，離職前以文件與存檔路徑完成交接。
+                                　　自訂檔案分層與版本規則（<code class="text-xs bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded text-blue-700 dark:text-blue-300 font-mono">年度＼工項＼文件標題＼編輯日期＼版本</code>），為所做工作撰寫備忘與交接說明，離職前以文件與存檔路徑完成交接。
                             </p>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
+                                <i class="fas fa-file-signature text-blue-500 text-xs"></i> 公文撰擬與場地租借合約
+                            </h4>
                             <p>
-                                負責專案進度報告與請款之公文撰擬與提送（參照既有範本；遇無前例類型時自行查閱規範），並協辦年度說明會場地租借合約。
+                                　　負責專案進度報告與請款之公文撰擬與提送（參照既有範本；遇無前例類型時自行查閱規範），並協辦年度說明會場地租借合約。
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 模組 4: AI 與自動化 (綠色) -->
-                <div class="glow-card card-green p-6 flex flex-col justify-between border-t-2 border-t-rainbow-green space-y-4 lg:col-span-1">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="pill-badge bg-rainbow-green text-black text-xs font-black">
-                                AI 與自動化
-                            </span>
-                            <span class="text-xs text-rainbow-green font-bold">專案實務</span>
+                <!-- 4. AI 與自動化 (含 6 張投影片) -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 sm:p-8 shadow-card-light dark:shadow-none hover-card-green transition-all space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-teal-100 text-teal-700 dark:bg-teal-950/60 dark:text-rainbow-green flex items-center justify-center font-bold text-base">
+                            <i class="fas fa-robot"></i>
                         </div>
-                        <h4 class="font-heading text-lg font-bold text-white dark:text-white card-h4">
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                             AI 與自動化
-                        </h4>
-                        <div class="text-xs text-gray-300 space-y-2.5 leading-relaxed card-body">
-                            <p>
-                                參與專案 AI 客服導入（115 年 1 月上線）：比較多種 LLM 與 embedding／RAG 方案並建立測試紀錄；針對電話紀錄與常見問答兩種資料測試三種組合，採「電話紀錄之提問＋常見問答之回答」，以涵蓋多樣真實問法並降低誤答；擬定資料庫整理 SOP 與清洗流程，資料品質不佳時改向第一線客服徵集常見問答；由 20～30 位同仁參與、累計至少 3,000 筆測試，依題型統計準確率（單一題型達約 90%），並依結果調整資料。
+                        </h3>
+                    </div>
+
+                    <div class="space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                        <p>
+                            　　參與專案 AI 客服導入（2026年 1 月上線）：比較多種 LLM 與 embedding／RAG 方案並建立測試紀錄；針對電話紀錄與常見問答兩種資料測試三種組合，採「電話紀錄之提問＋常見問答之回答」，以涵蓋多樣真實問法並降低誤答；擬定資料庫整理 SOP 與清洗流程，資料品質不佳時改向第一線客服徵集常見問答；由 20～30 位同仁參與、累計至少 3,000 筆測試，依題型統計準確率（單一題型達約 90%），並依結果調整資料。
+                        </p>
+                    </div>
+
+                    <!-- 6 張投影片展示區 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                            <span class="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                                <i class="fas fa-file-powerpoint text-teal-500"></i> 大語言模型 (LLM) 測試工作分享簡報（共 6 張投影片）
+                            </span>
+                            <span class="text-teal-600 dark:text-rainbow-green font-semibold">點選任一張可放大檢視</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                            <div class="rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] group">
+                                <img src="./images/image7.jpeg" alt="簡報1: 封面" class="w-full h-24 object-cover zoomable-img" onclick="openLightbox('./images/image7.jpeg', '簡報投影片 1：大語言模型 (LLM) 測試工作分享封面')">
+                                <p class="p-1.5 text-center text-[11px] font-medium text-slate-600 dark:text-slate-400">1. 簡報封面</p>
+                            </div>
+                            <div class="rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] group">
+                                <img src="./images/image8.jpeg" alt="簡報2: 備料與烹調概念" class="w-full h-24 object-cover zoomable-img" onclick="openLightbox('./images/image8.jpeg', '簡報投影片 2：概念說明（備料與烹調比喻）')">
+                                <p class="p-1.5 text-center text-[11px] font-medium text-slate-600 dark:text-slate-400">2. 備料與烹調</p>
+                            </div>
+                            <div class="rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] group">
+                                <img src="./images/image9.jpeg" alt="簡報3: Embedding / RAG 架構" class="w-full h-24 object-cover zoomable-img" onclick="openLightbox('./images/image9.jpeg', '簡報投影片 3：使用者提問 -> Embedding / RAG -> LLM 架構圖')">
+                                <p class="p-1.5 text-center text-[11px] font-medium text-slate-600 dark:text-slate-400">3. RAG架構圖</p>
+                            </div>
+                            <div class="rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] group">
+                                <img src="./images/image10.jpeg" alt="簡報4: 方案組合比較" class="w-full h-24 object-cover zoomable-img" onclick="openLightbox('./images/image10.jpeg', '簡報投影片 4：方案組合比較（3種模型與問答資料搭配）')">
+                                <p class="p-1.5 text-center text-[11px] font-medium text-slate-600 dark:text-slate-400">4. 方案組合測試</p>
+                            </div>
+                            <div class="rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] group">
+                                <img src="./images/image11.jpeg" alt="簡報5: 測試紀錄架構" class="w-full h-24 object-cover zoomable-img" onclick="openLightbox('./images/image11.jpeg', '簡報投影片 5：測試紀錄表架構與題目題型規劃')">
+                                <p class="p-1.5 text-center text-[11px] font-medium text-slate-600 dark:text-slate-400">5. 測試紀錄表</p>
+                            </div>
+                            <div class="rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-[#111622] group">
+                                <img src="./images/image12.jpeg" alt="簡報6: 資料品質評估" class="w-full h-24 object-cover zoomable-img" onclick="openLightbox('./images/image12.jpeg', '簡報投影片 6：資料品質評估結果與統計準確率')">
+                                <p class="p-1.5 text-center text-[11px] font-medium text-slate-600 dark:text-slate-400">6. 品質評估統計</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
+                                <i class="fas fa-diagram-project text-teal-500 text-xs"></i> Dify 工作流自建與評估報告
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                　　使用 Dify 自建 AI 工作流，便於追蹤與除錯；撰寫 AI 技術科普與導入評估報告，協助承辦單位決策。
                             </p>
-                            <p>
-                                使用 Dify 自建 AI 工作流，便於追蹤與除錯；撰寫 AI 技術科普與導入評估報告，協助承辦單位決策。
-                            </p>
-                            <p>
-                                協助評估名單篩選流程自動化：研究過往作法後，建議調整判斷順序並搭配程式自動化，無須全面交由 LLM 處理，經報告後獲採納。
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
+                                <i class="fas fa-filter text-teal-500 text-xs"></i> 名單篩選流程自動化評估
+                            </h4>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                　　協助評估名單篩選流程自動化：研究過往作法後，建議調整判斷順序並搭配程式自動化，無須全面交由 LLM 處理，經報告後獲採納。
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 模組 5: 活動營運與溝通 (藍色) -->
-                <div class="glow-card card-blue p-6 flex flex-col justify-between border-t-2 border-t-rainbow-blue space-y-4 lg:col-span-2">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="pill-badge bg-rainbow-blue/10 border border-rainbow-blue text-rainbow-blue text-xs font-bold">
-                                活動營運與溝通
-                            </span>
-                            <span class="text-xs text-gray-400 font-medium">溝通實踐</span>
+                <!-- 5. 活動營運與溝通 -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 sm:p-8 shadow-card-light dark:shadow-none hover-card-red transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-950/60 dark:text-rainbow-red flex items-center justify-center font-bold text-base">
+                            <i class="fas fa-users-gear"></i>
                         </div>
-                        <h4 class="font-heading text-lg font-bold text-white dark:text-white card-h4">
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                             活動營運與溝通
-                        </h4>
-                        <div class="text-xs text-gray-300 space-y-2.5 leading-relaxed card-body">
+                        </h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800 space-y-1.5">
+                            <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> 說明會報名前置統籌
+                            </h4>
                             <p>
-                                • 統籌年度說明會報名前置作業：整理場次、時程與報名須知供官網上架，自系統後台彙整報名人數估算講義數量，並製作簽到表、工作人員行前通知與場地動線／站位示意圖。
+                                　　統籌年度說明會報名前置作業：整理場次、時程與報名須知供官網上架，自系統後台彙整報名人數估算講義數量，並製作簽到表、工作人員行前通知與場地動線／站位示意圖。
                             </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800 space-y-1.5">
+                            <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> 第一線客服與實體講師經驗
+                            </h4>
                             <p>
-                                • 擔任專案電話客服代班（每日約 10～20 通），並每年兩度、各連續約一個月每日至少 20 通外撥電話向業者說明新政策，執行 5～6 年；每年至少擔任 3 場說明會講師，課後面對面回答 5～20 位業者的法規與申報問題。
+                                　　擔任專案電話客服代班（每日約 10～20 通），並每年兩度、各連續約一個月每日至少 20 通外撥電話向業者說明新政策，執行 5～6 年；每年至少擔任 3 場說明會講師，課後面對面回答 5～20 位業者的法規與申報問題。
                             </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800 space-y-1.5">
+                            <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> 個資與敏感資料最小揭露原則
+                            </h4>
                             <p>
-                                • 處理報名與客服資料時採最小揭露原則：簽到單僅列公司名稱、統編與人數；建立 AI 客服資料庫時過濾含聯絡人姓氏、營運狀況與密碼的內容。
+                                　　處理報名與客服資料時採最小揭露原則：簽到單僅列公司名稱、統編與人數；建立 AI 客服資料庫時過濾含聯絡人姓氏、營運狀況與密碼的內容。
                             </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-slate-800 space-y-1.5">
+                            <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> 跨組經驗分享與流程諮詢
+                            </h4>
                             <p>
-                                • 受主管邀請於公司內分享 AI 客服測試心得與線上說明會控場流程；整理之場地名單於組內流通，主管並轉介他組同仁來諮詢。
+                                　　受主管邀請於公司內分享 AI 客服測試心得與線上說明會控場流程；整理之場地名單於組內流通，主管並轉介他組同仁來諮詢。
                             </p>
                         </div>
                     </div>
                 </div>
 
             </div>
-
         </div>
     </section>
 
-    <!-- 03. 個人經歷時間軸 (Career Timeline) -->
-    <section id="experience" class="py-28 px-6 relative border-t border-gray-900 dark:border-gray-900 bg-black dark:bg-black transition-colors sec-bg-3">
-        <div class="max-w-5xl mx-auto space-y-16">
+    <!-- Section 3: 學經歷時間軸 (來自 104 履歷如實陳述) -->
+    <section id="experience" class="py-20 px-5 sm:px-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-[#07090e]">
+        <div class="max-w-4xl mx-auto space-y-12">
             
-            <!-- 區塊標題群組 -->
-            <div class="text-center space-y-6">
-                <div>
-                    <span class="pill-badge bg-rainbow-red/10 border border-rainbow-red text-rainbow-red text-xs uppercase tracking-widest px-4 py-1.5 font-bold eyebrow-red">
-                        Career Experience
-                    </span>
-                </div>
-                <h3 class="font-heading text-3xl sm:text-5xl font-black text-white dark:text-white tracking-wide sec-title">
-                    學經歷脈絡
-                </h3>
-                <p class="text-gray-300 dark:text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed pt-2 font-medium sec-subtitle">
-                    從語言文學的邏輯敏銳度，到製造業文管、工商顧問業 5 年 8 個月大型專案執行與外商營運
+            <div class="text-center space-y-3">
+                <h2 class="font-heading text-3xl sm:text-4xl font-black text-teal-600 dark:text-rainbow-green tracking-wide">
+                    學經歷時間軸
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                    總年資 6~7 年工作經歷，涵蓋外商建築顧問、環境顧問及製造業文管行政
                 </p>
             </div>
 
             <!-- 時間軸容器 -->
-            <div class="relative">
-                
-                <!-- 中央軸線 -->
-                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-[linear-gradient(to_bottom,#FF0055_0%,#FFD100_33%,#00F5D4_66%,#0088FF_100%)] -translate-x-1/2 opacity-80 timeline-line"></div>
-                <div class="md:hidden absolute left-4 top-0 bottom-0 w-[2px] bg-[linear-gradient(to_bottom,#FF0055_0%,#FFD100_33%,#00F5D4_66%,#0088FF_100%)] opacity-80 timeline-line"></div>
+            <div class="relative pl-6 sm:pl-8 space-y-10 before:content-[''] before:absolute before:left-2 sm:before:left-2.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800">
 
-                <div class="space-y-14">
-                    
-                    <!-- 階段 1: 輔仁大學 (左側 - 紅色) -->
-                    <div class="relative flex flex-col md:flex-row items-center">
-                        <div class="w-full md:w-1/2 md:pr-12 pl-10 md:pl-0">
-                            <div class="glow-card card-red p-6 border-l-4 border-l-rainbow-red space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="pill-badge bg-black dark:bg-black border border-rainbow-red text-rainbow-red text-xs font-bold timeline-pill">學歷起點</span>
-                                    <span class="text-xs text-gray-400 font-medium card-date">2014/09 ~ 2019/06</span>
-                                </div>
-                                <h4 class="font-heading text-xl font-bold text-white dark:text-white card-h4">私立輔仁大學</h4>
-                                <div class="text-sm text-rainbow-red font-bold tag-red">中國文學系 ＆ 德語語文學系（雙學士畢業）</div>
-                                <p class="text-xs text-gray-300 leading-relaxed pt-1 font-medium card-body">
-                                    💡 <strong class="font-bold text-white">習得核心</strong>：中文系鍛鍊出對文字與排版的極高敏銳度、結構化敘事與同理心；德文系培養嚴謹邏輯思考與雙語跨文化溝通基礎。
+                <!-- 1. IMO 埃恩歐設計顧問 (藍色實心點，Hover 藍框亮起) -->
+                <div class="relative group">
+                    <span class="absolute -left-6 sm:-left-8 top-1.5 w-4 h-4 rounded-full solid-dot-blue"></span>
+                    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0d121c] p-6 shadow-card-light dark:shadow-none hover-card-blue transition-all space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                            <div>
+                                <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                                    埃恩歐設計顧問有限公司 (IMO Architecture + Design Ltd.)
+                                </h3>
+                                <p class="text-blue-600 dark:text-rainbow-blue font-bold text-sm">
+                                    行政秘書
                                 </p>
                             </div>
+                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded bg-blue-50 text-blue-700 dark:bg-blue-950/50 dark:text-blue-300 self-start sm:self-auto">
+                                2026/5 ～ 2026/7（3個月）
+                            </span>
                         </div>
-                        <!-- 中心節點 1: 純實心紅圓 -->
-                        <div class="absolute left-4 md:left-1/2 top-6 w-5 h-5 rounded-full bg-rainbow-red -translate-x-1/2 timeline-dot dot-red"></div>
-                        <div class="hidden md:block w-1/2"></div>
-                    </div>
-
-                    <!-- 階段 2: 德利威電子 (右側 - 黃色) -->
-                    <div class="relative flex flex-col md:flex-row items-center">
-                        <div class="hidden md:block w-1/2"></div>
-                        <!-- 中心節點 2: 純實心黃圓 -->
-                        <div class="absolute left-4 md:left-1/2 top-6 w-5 h-5 rounded-full bg-rainbow-yellow -translate-x-1/2 timeline-dot dot-yellow"></div>
-                        <div class="w-full md:w-1/2 md:pl-12 pl-10">
-                            <div class="glow-card card-yellow p-6 border-l-4 border-l-rainbow-yellow space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="pill-badge bg-black dark:bg-black border border-rainbow-yellow text-rainbow-yellow text-xs font-bold timeline-pill">製造業嚴謹文管</span>
-                                    <span class="text-xs text-gray-400 font-medium card-date">2019/07 ~ 2020/02</span>
-                                </div>
-                                <h4 class="font-heading text-xl font-bold text-white dark:text-white card-h4">德利威電子股份有限公司</h4>
-                                <div class="text-sm text-rainbow-yellow font-bold tag-yellow">行政櫃台 ／ 文管（製造業）</div>
-                                <p class="text-xs text-gray-300 leading-relaxed pt-1 font-medium card-body">
-                                    💡 <strong class="font-bold text-white">習得核心</strong>：建立工程變更會簽（ECR/ECN）文管體系、圖面發行與客戶承認書建檔，培養出對文件細節「零出錯」的自律習慣。
-                                </p>
-                            </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                            行政人員 ｜ 台北市大安區 ｜ 建築設計業 1~30人
+                        </p>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 pt-1">
+                            <p>　　<strong>行政庶務：</strong>電話接聽與轉接、信件收發與郵寄作業。</p>
+                            <p>　　<strong>辦公室與設施管理：</strong>辦公室環境維護、辦公用品訂購與庫存維護、辦公室租賃事務管理。</p>
+                            <p>　　<strong>人事與財務行政：</strong>人員出缺勤紀錄、零用金管理、二代健保補充保費申報。</p>
+                            <p>　　<strong>數位內容管理：</strong>公司網站文章更新與維護。</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-[#111622] p-2.5 rounded-lg border border-slate-100 dark:border-slate-800/80">
+                                <i class="fas fa-language text-blue-500 mr-1"></i> 公司主管為西班牙籍、同事包含美籍人員，日常溝通以英文為主、中文為輔，具備雙語溝通基礎能力與經驗。
+                            </p>
                         </div>
                     </div>
-
-                    <!-- 階段 3: 環資國際有限公司 (左側 - 綠色) -->
-                    <div class="relative flex flex-col md:flex-row items-center">
-                        <div class="w-full md:w-1/2 md:pr-12 pl-10 md:pl-0">
-                            <div class="glow-card card-green p-7 border-l-4 border-l-rainbow-green space-y-3 bg-[#0c121d] dark:bg-[#0c121d]">
-                                <div class="flex justify-between items-center">
-                                    <span class="pill-badge bg-rainbow-green text-black text-xs font-black pill-huanzi">核心經歷 5年8個月</span>
-                                    <span class="text-xs text-rainbow-green font-bold tag-green-date">2020/08 ~ 2026/03</span>
-                                </div>
-                                <h4 class="font-heading text-2xl font-bold text-white dark:text-white card-h4">環資國際有限公司</h4>
-                                <div class="text-sm text-rainbow-green font-bold tag-green">環境工程師 ／ 專案執行（工商顧問業）</div>
-                                <p class="text-xs text-gray-200 leading-relaxed font-bold card-body">
-                                    💡 <strong class="text-white">行政營運與專案執行集大成</strong>：
-                                </p>
-                                <ul class="text-xs text-gray-300 space-y-1.5 pl-2 font-medium card-list">
-                                    <li>• <strong class="font-bold text-white">活動與經費核銷</strong>：年辦 10～15 場說明會，編撰核銷雲端範本，整理時程省半天。</li>
-                                    <li>• <strong class="font-bold text-white">進階試算表</strong>：XLOOKUP、合併列印、抽獎流水號串接四層自動計算表。</li>
-                                    <li>• <strong class="font-bold text-white">AI 智動化落地</strong>：Dify 平台 RAG 測試、電話問法過濾，3000 筆測試達 90% 準確率。</li>
-                                    <li>• <strong class="font-bold text-white">深厚客戶溝通</strong>：連續 5 年電話代班與主動外撥，實體講師面對面化解業者法規疑問。</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- 中心節點 3: 純實心綠圓 -->
-                        <div class="absolute left-4 md:left-1/2 top-6 w-5 h-5 rounded-full bg-rainbow-green -translate-x-1/2 timeline-dot dot-green"></div>
-                        <div class="hidden md:block w-1/2"></div>
-                    </div>
-
-                    <!-- 階段 4: 埃恩歐設計顧問有限公司 IMO (右側 - 藍色) -->
-                    <div class="relative flex flex-col md:flex-row items-center">
-                        <div class="hidden md:block w-1/2"></div>
-                        <!-- 中心節點 4: 純實心藍圓 -->
-                        <div class="absolute left-4 md:left-1/2 top-6 w-5 h-5 rounded-full bg-rainbow-blue -translate-x-1/2 timeline-dot dot-blue"></div>
-                        <div class="w-full md:w-1/2 md:pl-12 pl-10">
-                            <div class="glow-card card-blue p-6 border-l-4 border-l-rainbow-blue space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="pill-badge bg-black dark:bg-black border border-rainbow-blue text-rainbow-blue text-xs font-bold timeline-pill">外商雙語營運</span>
-                                    <span class="text-xs text-gray-400 font-medium card-date">2026/05 ~ 2026/07</span>
-                                </div>
-                                <h4 class="font-heading text-xl font-bold text-white dark:text-white leading-snug card-h4">
-                                    IMO Architecture + Design<br>
-                                    <span class="text-sm font-bold text-gray-300">埃恩歐設計顧問有限公司</span>
-                                </h4>
-                                <div class="text-sm text-rainbow-blue font-bold pt-1 tag-blue">行政秘書（建築設計業）</div>
-                                <p class="text-xs text-gray-300 leading-relaxed pt-1 font-medium card-body">
-                                    💡 <strong class="font-bold text-white">習得核心</strong>：西班牙籍主管與美籍同事雙語溝通協作、辦公室營運、官網文章更新與人事財務庶務，具備適應設計創意團隊的高靈活彈性。
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
+                <!-- 2. 環資國際 (綠色實心點，Hover 綠框亮起) -->
+                <div class="relative group">
+                    <span class="absolute -left-6 sm:-left-8 top-1.5 w-4 h-4 rounded-full solid-dot-green"></span>
+                    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0d121c] p-6 shadow-card-light dark:shadow-none hover-card-green transition-all space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                            <div>
+                                <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                                    環資國際有限公司
+                                </h3>
+                                <p class="text-teal-600 dark:text-rainbow-green font-bold text-sm">
+                                    環境工程師 / 專案執行
+                                </p>
+                            </div>
+                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded bg-teal-50 text-teal-700 dark:bg-teal-950/50 dark:text-teal-300 self-start sm:self-auto">
+                                2020/8 ～ 2026/3（5年8個月）
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                            行政人員 ｜ 台北市萬華區 ｜ 工商顧問服務業 100~500人
+                        </p>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 pt-1 leading-relaxed">
+                            <p>　　<strong>年度宣導活動統籌（虛實整合與流程標準化）：</strong>全台巡迴說明會 10-15 場（約 1,000 人次）線下活動控管與預算支出；Google Meet 350 人線上視訊會議串流與標準作業流程；導入 Kahoot! 與 Excel 即時問卷分析並編製操作手卡；擔任講師與主持人應對業者提問。</p>
+                            <p>　　<strong>教材編撰與文宣規劃（資訊轉譯與視覺化）：</strong>研讀環保法令原文，分析新舊法規差異，重新取捨編排年度宣導重點；運用 PPT 進行圖文排版結構化法規文字，以 5W1H 原則撰寫社群宣傳圖卡文宣。</p>
+                            <p>　　<strong>客服系統轉型（LINE@ 轉型到 AI 客服產品落地）：</strong>LINE@ 官方帳號分流（線上初篩、電話深談）；使用 Dify 平台進行 LLM 應用、專案知識庫架構設計與 AI 工作流建置；擔任「業務需求端」與「技術端」轉譯窗口。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 德利威電子 (黃色實心點，Hover 黃框亮起) -->
+                <div class="relative group">
+                    <span class="absolute -left-6 sm:-left-8 top-1.5 w-4 h-4 rounded-full solid-dot-yellow"></span>
+                    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0d121c] p-6 shadow-card-light dark:shadow-none hover-card-yellow transition-all space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                            <div>
+                                <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                                    德利威電子股份有限公司
+                                </h3>
+                                <p class="text-amber-600 dark:text-rainbow-yellow font-bold text-sm">
+                                    行政櫃台／文管（約聘）
+                                </p>
+                            </div>
+                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300 self-start sm:self-auto">
+                                2019/7 ～ 2020/2（8個月）
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                            行政人員 ｜ 新北市中和區 ｜ 其他金屬相關製造業 500人以上
+                        </p>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 pt-1">
+                            <p>　　<strong>行政：</strong>電話接聽與轉接（過濾來電）、固定費用請款、零用金管理、機器叫修、用品訂購、郵局寄件、接待訪客、訂購餐點。</p>
+                            <p>　　<strong>文管：</strong>負責一般文書資料處理及歸檔工作；收發文件、會簽文件追蹤（ECR/ECN）；產品圖面發行與更新；客戶承認書資料彙整與建檔。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. 輔仁大學學歷 (紅色實心點，Hover 紅框亮起) -->
+                <div class="relative group">
+                    <span class="absolute -left-6 sm:-left-8 top-1.5 w-4 h-4 rounded-full solid-dot-red"></span>
+                    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0d121c] p-6 shadow-card-light dark:shadow-none hover-card-red transition-all space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                            <div>
+                                <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                                    私立輔仁大學
+                                </h3>
+                                <p class="text-rose-600 dark:text-rainbow-red font-bold text-sm">
+                                    中國文學系 ＆ 德語語文學系（雙學士）
+                                </p>
+                            </div>
+                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded bg-rose-50 text-rose-700 dark:bg-rose-950/50 dark:text-rose-300 self-start sm:self-auto">
+                                2014/9 ～ 2019/6
+                            </span>
+                        </div>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1">
+                            <p>　　・中國文學系 大學畢業（2014/9 ～ 2018/6）</p>
+                            <p>　　・德語語文學系 大學畢業（2015/9 ～ 2019/6，雙學士）</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- 04. 為什麼想加入 justfont (Why justfont) -->
-    <section id="why-jf" class="py-24 px-6 border-t border-gray-900 dark:border-gray-900 bg-[#06080d] dark:bg-[#06080d] transition-colors sec-bg-2">
-        <div class="max-w-4xl mx-auto space-y-12">
+    <!-- Section 4: 證照資格、語言能力與專長工具 -->
+    <section id="qualifications" class="py-20 px-5 sm:px-8 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto space-y-10">
             
-            <div class="text-center space-y-4">
-                <span class="pill-badge bg-rainbow-yellow/10 border border-rainbow-yellow text-rainbow-yellow text-xs uppercase tracking-widest px-4 py-1.5 font-bold">
-                    Motivation & Values
-                </span>
-                <h3 class="font-heading text-3xl sm:text-4xl font-black text-white dark:text-white">
-                    為什麼我渴望加入 justfont？
-                </h3>
+            <div class="text-center space-y-3">
+                <h2 class="font-heading text-3xl sm:text-4xl font-black text-blue-600 dark:text-rainbow-blue tracking-wide">
+                    證照與技能
+                </h2>
             </div>
 
-            <div class="glow-card p-8 sm:p-10 border border-gray-800 space-y-6 text-gray-200 leading-relaxed text-sm sm:text-base">
-                <p>
-                    身為中文系出身的文字愛好者，我長期關注 justfont 對於台灣字型美學的推廣。從早期的字體科普、金萱體到後來的 jf open 粉圓，我深深敬佩團隊將生澀字型工程轉化為大眾日常溫暖陪伴的努力。
-                </p>
-                <p>
-                    我深信：<strong class="text-rainbow-yellow font-bold">「一個順暢、嚴謹且有溫度的營運後盾，是所有優秀創作得以持續發光的最大支柱。」</strong>
-                </p>
-                <p>
-                    justfont 正在尋找的不僅是處理表單的人，而是一位「能用試算表與 AI 數位工具解決重複痛點、能細膩守護帳務與個資、並能用真誠同理心面對第一線使用者」的行政營運專員。這正好與我過去 5 年多來在專案營運中所鍛鍊出的特質不謀而合。
-                </p>
-                <p class="pt-2 text-white font-bold">
-                    我非常期待能加入 justfont，成為這支充滿理想與美感團隊裡最可靠、最溫暖的行政齒輪！
-                </p>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
+                <!-- 語言能力 -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 shadow-card-light dark:shadow-none space-y-3">
+                    <div class="flex items-center gap-2.5 text-rose-600 dark:text-rainbow-red font-bold font-heading text-base">
+                        <i class="fas fa-language text-lg"></i>
+                        <span>語言能力</span>
+                    </div>
+                    <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                        <li><strong>英文：</strong>聽/中等 說/中等 讀/中等 寫/中等<br><span class="text-xs text-slate-400">（具英語工作環境溝通經驗）</span></li>
+                        <li><strong>德文：</strong>聽/中等 說/中等 讀/中等 寫/中等</li>
+                        <li><strong>台語：</strong>略懂</li>
+                    </ul>
+                </div>
+
+                <!-- 專業證照 -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 shadow-card-light dark:shadow-none space-y-3">
+                    <div class="flex items-center gap-2.5 text-amber-600 dark:text-rainbow-yellow font-bold font-heading text-base">
+                        <i class="fas fa-award text-lg"></i>
+                        <span>資格認證</span>
+                    </div>
+                    <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2.5">
+                                                <li>
+                            <strong class="text-slate-900 dark:text-white block">陸上運輸相關證照：普通小型車駕照</strong>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">中華民國交通部公路總局 4011510151103（2026/10 ～ 2065/12）</span>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white block">TOEIC 多益測驗 860 分</strong>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">聽力 465 / 閱讀 395（2019）</span>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white block">FLPT 德語檢定</strong>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">筆試 237分 (B2) / 口試 S2 (B1)（2019）</span>
+                        </li>
+                        <li>
+                            <strong class="text-slate-900 dark:text-white block">全方位基礎人力資源管理師認證</strong>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">社團法人中華人力資源管理協會</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 擅長工具 -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c1017] p-6 shadow-card-light dark:shadow-none space-y-3">
+                    <div class="flex items-center gap-2.5 text-teal-600 dark:text-rainbow-green font-bold font-heading text-base">
+                        <i class="fas fa-laptop-code text-lg"></i>
+                        <span>擅長工具與應用</span>
+                    </div>
+                    <div class="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                        <div>
+                            <strong class="text-slate-900 dark:text-white block mb-1">辦公室應用：</strong>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">Excel（樞紐/IF/COUNTIF/XLOOKUP）</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">Word（合併列印）</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">PowerPoint</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">Outlook</span>
+                            </div>
+                        </div>
+                        <div>
+                            <strong class="text-slate-900 dark:text-white block mb-1">數位與協作平台：</strong>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">Dify（AI 工作流）</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">Google Meet</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">LINE@ 官方帳號</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">Kahoot!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- 05. 聯絡我 (Contact) -->
-    <section id="contact" class="py-24 px-6 border-t border-gray-900 dark:border-gray-900 bg-black dark:bg-black text-center relative overflow-hidden transition-colors sec-bg-4">
-        <div class="max-w-3xl mx-auto space-y-10 relative z-10">
-            
-            <div class="speech-bubble max-w-lg mx-auto">
-                <p class="text-lg leading-relaxed font-bold">
-                    「期待有機會能與 justfont 團隊當面聊聊，分享我能為團隊日常營運帶來的具體貢獻！」
-                </p>
-            </div>
+    <!-- Section 5: 聯絡與頁尾 -->
+    <footer id="contact" class="py-16 px-5 sm:px-8 bg-slate-100/80 dark:bg-[#05070a] text-center">
+        <div class="max-w-xl mx-auto space-y-6">
+            <h2 class="font-heading text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                期待與 justfont 當面交流
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                　　感謝撥冗閱讀我的應徵資料。若對我的專案行政、活動營運或流程整理經歷有任何想進一步了解的地方，歡迎隨時與我聯繫！
+            </p>
 
-            <div class="space-y-3 pt-4">
-                <h3 class="font-heading text-3xl sm:text-4xl font-black text-white dark:text-white sec-title">
-                    聯絡吳思穎
-                </h3>
-                <p class="text-gray-400 text-sm font-medium">
-                    隨時歡迎透過 Email 或電話與我聯繫
-                </p>
-            </div>
-
-            <!-- 聯絡方式按鈕群 -->
-            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 pt-2">
-                <a href="mailto:ichbinalicewu35@gmail.com" class="pill-badge bg-rainbow-red text-white px-8 py-3.5 font-bold hover:shadow-neon-red hover:scale-105 transition-all text-sm">
-                    <i class="fa-solid fa-envelope mr-2"></i> ichbinalicewu35@gmail.com
+            <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                <a href="tel:0958321139" class="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-2.5 text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 hover:border-rose-500 hover:text-rose-600 transition-all">
+                    <i class="fas fa-phone text-rose-500"></i> 撥打 0958-321-139
                 </a>
-                <a href="tel:0930170135" class="pill-badge bg-transparent border-2 border-white dark:border-white text-white dark:text-white px-8 py-3.5 font-bold hover:bg-white hover:text-black hover:shadow-neon-white transition-all text-sm contact-btn">
-                    <i class="fa-solid fa-phone mr-2"></i> 0930-170-135
+                <a href="mailto:ichbinalicewu35@gmail.com" class="inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white text-white dark:text-black px-6 py-2.5 text-xs sm:text-sm font-bold hover:bg-slate-800 dark:hover:bg-slate-200 transition-all hover:scale-105">
+                    <i class="fas fa-envelope"></i> 發送信件給 Alice
                 </a>
             </div>
 
-            <div class="pt-8 text-xs text-gray-500 font-medium">
-                © 2026 吳思穎 Alice Wu ・ Dedicated Application Portfolio for justfont
+            <div class="pt-8 border-t border-slate-200 dark:border-slate-800/80 text-[11px] text-slate-400 dark:text-slate-500 space-y-1">
+                <p>吳思穎 Alice Wu | 應徵 justfont 行政營運專員專用履歷網頁</p>
+                <p>字體採用 justfont 官方粉圓體 (Open Huninn) 與 源泉圓體 (GenSenRounded)</p>
             </div>
-
         </div>
-    </section>
+    </footer>
 
-    <!-- JavaScript: 深淺色主題切換邏輯 -->
+    <!-- 全螢幕圖片放大檢視 Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4 sm:p-8" onclick="closeLightbox(event)">
+        <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <!-- 關閉按鈕 -->
+            <button onclick="closeLightbox(event)" class="absolute -top-12 right-0 sm:-right-4 text-white/80 hover:text-white text-2xl w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- 圖片容器 -->
+            <div class="w-full flex items-center justify-center overflow-auto max-h-[80vh] rounded-lg">
+                <img id="lightbox-img" src="" alt="放大預覽" class="max-w-full max-h-[80vh] object-contain rounded-md shadow-2xl border border-white/10">
+            </div>
+            <!-- 圖片標題與說明 -->
+            <div id="lightbox-caption" class="text-white/90 text-xs sm:text-sm font-medium mt-3 text-center bg-black/60 px-4 py-1.5 rounded-full border border-white/10">
+            </div>
+        </div>
+    </div>
+
+    <!-- 深淺色切換與 Lightbox 控制腳本 -->
     <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
         const html = document.documentElement;
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
 
-        // 讀取既有設定或預設
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        if (currentTheme === 'light') {
+        // 初始化深淺色模式（預設深色模式，符合原本設定；亦可點擊切換為乾淨淺色版）
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
             enableLightMode();
         } else {
             enableDarkMode();
         }
 
-        themeToggleBtn.addEventListener('click', () => {
+        themeToggle.addEventListener('click', () => {
             if (html.classList.contains('dark')) {
                 enableLightMode();
             } else {
@@ -737,82 +900,39 @@
         function enableLightMode() {
             html.classList.remove('dark');
             localStorage.setItem('theme', 'light');
-
-            document.body.className = "bg-[#f8fafc] text-slate-800 font-medium";
-            
-            const nav = document.getElementById('main-nav');
-            nav.className = "fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-colors shadow-sm";
-            document.querySelector('.brand-logo-circle').className = "w-10 h-10 rounded-full border-2 border-rainbow-redDark flex items-center justify-center font-heading font-black text-rainbow-redDark brand-logo-circle";
-            document.querySelector('.nav-title').className = "font-heading text-lg font-bold tracking-wider text-slate-900 group-hover:text-rainbow-redDark transition-colors nav-title";
-            document.querySelector('.brand-en-text').className = "text-rainbow-redDark text-sm font-semibold brand-en-text";
-            document.querySelector('.nav-links').className = "hidden md:flex items-center gap-8 font-bold text-slate-600 text-sm nav-links";
-            document.querySelector('.contact-nav-btn').className = "pill-badge bg-slate-900 text-white hover:bg-slate-700 transition-all hover:scale-105 font-black contact-nav-btn shadow-sm";
-
-            document.getElementById('hero-sec').className = "min-h-screen flex items-center pt-36 pb-20 px-6 relative overflow-hidden bg-gradient-to-b from-slate-50 to-white transition-colors";
-            document.querySelector('.hero-h1').className = "font-heading text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight hero-h1";
-            document.querySelector('.hero-name-en').className = "font-heading text-2xl sm:text-4xl text-rainbow-redDark font-bold ml-2 hero-name-en";
-            document.querySelector('.hero-subtitle').className = "font-heading text-xl sm:text-3xl font-extrabold text-rainbow-yellowDark leading-snug pt-1 hero-subtitle";
-            document.querySelector('.hero-body-text').className = "space-y-4 text-slate-700 text-base sm:text-lg leading-relaxed max-w-2xl font-medium hero-body-text";
-
-            document.querySelector('.hero-btn-red').className = "pill-badge bg-rainbow-redDark text-white px-7 py-3.5 font-bold hover:bg-rose-700 transition-all text-sm hero-btn-red shadow-sm";
-            document.querySelector('.hero-btn-yellow').className = "pill-badge bg-white border-2 border-amber-500 text-rainbow-yellowDark px-7 py-3.5 font-bold hover:bg-amber-50 transition-all text-sm hero-btn-yellow shadow-sm";
-            document.querySelector('.hero-btn-green').className = "pill-badge bg-white border-2 border-teal-600 text-rainbow-greenDark px-7 py-3.5 font-bold hover:bg-teal-50 transition-all text-sm hero-btn-green shadow-sm";
-
-            document.querySelector('.sec-bg-1').className = "py-28 px-6 border-t border-slate-200 bg-white transition-colors sec-bg-1";
-            document.querySelector('.sec-bg-2').className = "py-24 px-6 border-t border-slate-200 bg-slate-50 transition-colors sec-bg-2";
-            document.querySelector('.sec-bg-3').className = "py-28 px-6 border-t border-slate-200 bg-white transition-colors sec-bg-3";
-            document.querySelector('.sec-bg-4').className = "py-24 px-6 border-t border-slate-200 bg-slate-50 text-center relative overflow-hidden transition-colors sec-bg-4";
-
-            document.querySelectorAll('.sec-title').forEach(el => el.className = "font-heading text-3xl sm:text-5xl font-black text-slate-900 tracking-wide sec-title");
-            document.querySelectorAll('.sec-subtitle').forEach(el => el.className = "text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed pt-2 font-medium sec-subtitle");
-            document.querySelectorAll('.card-h4').forEach(el => el.className = "font-heading text-xl font-bold text-slate-900 card-h4");
-            document.querySelectorAll('.card-body').forEach(el => el.className = "text-xs text-slate-600 leading-relaxed pt-1 font-normal card-body");
-            document.querySelectorAll('.card-list').forEach(el => el.className = "text-xs text-slate-600 space-y-1.5 pl-2 font-normal card-list");
-            document.querySelectorAll('.card-date').forEach(el => el.className = "text-xs text-slate-400 font-medium card-date");
-
-            document.querySelectorAll('.timeline-pill').forEach(el => el.className = el.className.replace('bg-black', 'bg-white').replace('shadow-none', '') + ' shadow-none');
-            document.querySelectorAll('.contact-btn').forEach(el => el.className = "pill-badge bg-white border-2 border-slate-900 text-slate-900 px-8 py-3.5 font-bold hover:bg-slate-900 hover:text-white transition-all text-sm shadow-sm contact-btn");
+            themeIcon.className = "fas fa-moon text-slate-700";
         }
 
         function enableDarkMode() {
             html.classList.add('dark');
             localStorage.setItem('theme', 'dark');
-
-            document.body.className = "bg-black text-slate-100 dark:bg-black dark:text-slate-100 selection:bg-rainbow-red selection:text-white font-medium";
-            
-            const nav = document.getElementById('main-nav');
-            nav.className = "fixed top-0 left-0 w-full z-50 bg-black/85 dark:bg-black/85 backdrop-blur-md border-b border-gray-900 dark:border-gray-900 transition-colors";
-            document.querySelector('.brand-logo-circle').className = "w-10 h-10 rounded-full border-2 border-rainbow-red flex items-center justify-center font-heading font-black text-rainbow-red brand-logo-circle";
-            document.querySelector('.nav-title').className = "font-heading text-lg font-bold tracking-wider text-white dark:text-white group-hover:text-rainbow-red transition-colors nav-title";
-            document.querySelector('.brand-en-text').className = "text-rainbow-red text-sm font-semibold brand-en-text";
-            document.querySelector('.nav-links').className = "hidden md:flex items-center gap-8 font-bold text-gray-300 dark:text-gray-300 text-sm nav-links";
-            document.querySelector('.contact-nav-btn').className = "pill-badge bg-white dark:bg-white text-black hover:bg-gray-200 hover:shadow-neon-white transition-all hover:scale-105 font-black contact-nav-btn";
-
-            document.getElementById('hero-sec').className = "min-h-screen flex items-center pt-36 pb-20 px-6 relative overflow-hidden bg-black dark:bg-black transition-colors";
-            document.querySelector('.hero-h1').className = "font-heading text-4xl sm:text-6xl font-black text-white dark:text-white tracking-tight leading-tight hero-h1";
-            document.querySelector('.hero-name-en').className = "font-heading text-2xl sm:text-4xl text-rainbow-red font-bold ml-2 hero-name-en drop-shadow-[0_0_15px_rgba(255,0,85,0.4)]";
-            document.querySelector('.hero-subtitle').className = "font-heading text-xl sm:text-3xl font-extrabold text-rainbow-yellow dark:text-rainbow-yellow leading-snug pt-1 hero-subtitle";
-            document.querySelector('.hero-body-text').className = "space-y-4 text-gray-200 dark:text-gray-200 text-base sm:text-lg leading-relaxed max-w-2xl font-medium hero-body-text";
-
-            document.querySelector('.hero-btn-red').className = "pill-badge bg-rainbow-red text-white px-7 py-3.5 font-bold hover:shadow-neon-red hover:scale-105 transition-all text-sm hero-btn-red";
-            document.querySelector('.hero-btn-yellow').className = "pill-badge bg-transparent border-2 border-rainbow-yellow text-rainbow-yellow px-7 py-3.5 font-bold hover:bg-rainbow-yellow hover:text-black hover:shadow-neon-yellow transition-all text-sm hero-btn-yellow";
-            document.querySelector('.hero-btn-green').className = "pill-badge bg-transparent border-2 border-rainbow-green text-rainbow-green px-7 py-3.5 font-bold hover:bg-rainbow-green hover:text-black hover:shadow-neon-green transition-all text-sm hero-btn-green";
-
-            document.querySelector('.sec-bg-1').className = "py-28 px-6 border-t border-gray-900 dark:border-gray-900 bg-[#040608] dark:bg-[#040608] transition-colors sec-bg-1";
-            document.querySelector('.sec-bg-2').className = "py-24 px-6 border-t border-gray-900 dark:border-gray-900 bg-[#06080d] dark:bg-[#06080d] transition-colors sec-bg-2";
-            document.querySelector('.sec-bg-3').className = "py-28 px-6 border-t border-gray-900 dark:border-gray-900 bg-black dark:bg-black transition-colors sec-bg-3";
-            document.querySelector('.sec-bg-4').className = "py-24 px-6 border-t border-gray-900 dark:border-gray-900 bg-black dark:bg-black text-center relative overflow-hidden transition-colors sec-bg-4";
-
-            document.querySelectorAll('.sec-title').forEach(el => el.className = "font-heading text-3xl sm:text-5xl font-black text-white dark:text-white tracking-wide sec-title");
-            document.querySelectorAll('.sec-subtitle').forEach(el => el.className = "text-gray-300 dark:text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed pt-2 font-medium sec-subtitle");
-            document.querySelectorAll('.card-h4').forEach(el => el.className = "font-heading text-xl font-bold text-white dark:text-white card-h4");
-            document.querySelectorAll('.card-body').forEach(el => el.className = "text-xs text-gray-300 dark:text-gray-300 leading-relaxed pt-1 font-medium card-body");
-            document.querySelectorAll('.card-list').forEach(el => el.className = "text-xs text-gray-300 space-y-1.5 pl-2 font-medium card-list");
-            document.querySelectorAll('.card-date').forEach(el => el.className = "text-xs text-gray-400 font-medium card-date");
-
-            document.querySelectorAll('.timeline-pill').forEach(el => el.className = el.className.replace('bg-white', 'bg-black'));
-            document.querySelectorAll('.contact-btn').forEach(el => el.className = "pill-badge bg-transparent border-2 border-white dark:border-white text-white dark:text-white px-8 py-3.5 font-bold hover:bg-white hover:text-black hover:shadow-neon-white transition-all text-sm contact-btn");
+            themeIcon.className = "fas fa-sun text-amber-400";
         }
+
+        // Lightbox Modal 控制
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(src, caption) {
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption || '';
+            lightboxModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(e) {
+            lightboxModal.classList.add('hidden');
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // 按 ESC 鍵關閉 Lightbox
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
     </script>
 
 </body>
