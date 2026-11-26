@@ -108,7 +108,7 @@ def create_resume_docx_5pages(output_path, img_dir):
     run_t = p_title.add_run("[行政營運專員] 吳思穎")
     set_run_font(run_t, size_pt=10, bold=True, color=RGBColor(15, 23, 42))
 
-    add_body_p("您好，", indent=False, space_after=3, size_pt=10)
+    add_body_p("justfont 您好：", indent=False, space_after=3, size_pt=10)
     add_body_p("我是吳思穎 Alice，有約6年專案行政與活動營運經驗。看到 justfont 徵求行政營運專員，想誠摯地投遞應徵。", size_pt=10)
     add_body_p("我對 justfont 的認識，是從使用粉圓體開始的。Google 文件能用粉圓時，我非常開心；後來也追蹤了Instagram，蘭陽黑體的「信任遊戲」短片讓我印象深刻。我喜歡在穩定架構下又帶有個人風格的字體，也相信不同情境適合用不同字體表達情緒，所以選擇越多越好。小時候的硬筆字比賽多半以標楷體為標準，我的美感也是很晚才開始累積，所以特別珍惜 justfont 讓更多人接觸到多元字體的努力。", size_pt=10)
     add_body_p("在過去的工作中，我習慣把重複、容易出錯的事情整理成清楚的流程。例如我設計了說明會核銷的試算表範本，讓年底整理時間從約一個工作天縮短到半天內，後來被會計推薦給其他專案參考；也設計過前後測成效統計表，讓每場結束就能看見結果並調整課程。參與專案 AI 客服導入時，我也學到什麼工作適合交給 AI、什麼工作不必，曾建議某個名單篩選流程用調整邏輯與程式自動化處理即可，確保名單的正確性可控，不必全部交給 LLM，意見後來獲得甲方採納。", size_pt=10)
