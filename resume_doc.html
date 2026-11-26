@@ -118,32 +118,48 @@
             align-items: center;
         }
 
-        /* 列印專屬 CSS：確保 100% 精準 1 頁印 1 張 A4 */
+        /* 列印專屬 CSS：確保 100% 精準 1 頁印 1 張 A4，零多餘空白頁 */
         @media print {
             @page {
                 size: A4 portrait;
                 margin: 0;
             }
-            body {
+            html, body {
                 background: white !important;
                 margin: 0 !important;
                 padding: 0 !important;
-            }
-            .a4-sheet {
                 width: 210mm !important;
-                height: 297mm !important;
-                min-height: 297mm !important;
-                max-height: 297mm !important;
+                height: auto !important;
+            }
+            .py-4 {
+                padding: 0 !important;
                 margin: 0 !important;
-                padding: 18mm 20mm 16mm 20mm !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                page-break-after: always !important;
-                break-after: page !important;
-                overflow: hidden !important;
             }
             .no-print {
                 display: none !important;
+            }
+            .a4-sheet {
+                width: 210mm !important;
+                height: 296mm !important;
+                min-height: 296mm !important;
+                max-height: 296mm !important;
+                margin: 0 !important;
+                padding: 16mm 20mm 14mm 20mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                border: none !important;
+                overflow: hidden !important;
+                box-sizing: border-box !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+            .a4-sheet:not(:last-child) {
+                break-after: page !important;
+                page-break-after: always !important;
+            }
+            .a4-sheet:last-child {
+                break-after: avoid !important;
+                page-break-after: avoid !important;
             }
         }
     </style>
@@ -166,6 +182,9 @@
             <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition-all shadow-sm">
                 <i class="fas fa-print"></i> 列印 / 另存為 PDF (Cmd+P)
             </button>
+            <a href="./吳思穎_justfont應徵履歷_附實績圖文.pdf" download class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold transition-all shadow-sm">
+                <i class="fas fa-file-pdf text-rose-600"></i> 下載 PDF 檔 (.pdf)
+            </a>
             <a href="./吳思穎_justfont應徵履歷_附實績圖文.docx" download class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all shadow-sm">
                 <i class="fas fa-file-word text-blue-500"></i> 下載 Word 檔 (.docx)
             </a>
