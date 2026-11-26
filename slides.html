@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吳思穎 Alice Wu | justfont 應徵簡報專頁 (Slides)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rainbow: {
+                            red: '#FF0055',
+                            yellow: '#FFD100',
+                            green: '#00F5D4',
+                            blue: '#0088FF',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Comfortaa', 'OpenHuninn', 'GenSenRounded', 'sans-serif'],
+                        body: ['Quicksand', 'OpenHuninn', 'GenSenRounded', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'OpenHuninn';
+            src: url('./fonts/jf-openhuninn-2.1.ttf') format('truetype');
+            font-weight: 400 700;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('./fonts/gensen/GenSenRounded2TW-R.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('./fonts/gensen/GenSenRounded2TW-M.otf') format('opentype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('./fonts/gensen/GenSenRounded2TW-B.otf') format('opentype');
+            font-weight: 700;
+        }
+        body {
+            font-family: 'Quicksand', 'OpenHuninn', 'GenSenRounded', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-[#07090e] text-slate-100 dark:bg-[#07090e] dark:text-slate-100 min-h-screen flex flex-col transition-colors">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-[#0d121c]/90 dark:bg-[#0d121c]/90 backdrop-blur-md border-b border-slate-800 px-6 py-3.5 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <a href="./index.html" class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors">
+                <i class="fas fa-arrow-left text-sm"></i>
+                <span class="text-sm font-bold">返回履歷網頁</span>
+            </a>
+            <div class="h-4 w-px bg-slate-700"></div>
+            <div>
+                <h1 class="font-heading font-black text-base sm:text-lg text-white">吳思穎 Alice Wu ｜ <span class="text-rose-400 font-bold">簡報檢視專頁</span></h1>
+            </div>
+        </div>
+
+        <!-- Controls: Theme toggle & Download -->
+        <div class="flex items-center gap-3">
+            <div class="flex items-center bg-slate-800 rounded-full p-1 border border-slate-700 text-xs font-bold">
+                <button id="btn-dark" onclick="setTheme('dark')" class="px-3 py-1 rounded-full bg-rose-600 text-white transition-all flex items-center gap-1.5">
+                    <i class="fas fa-moon text-xs"></i> 暗色版
+                </button>
+                <button id="btn-light" onclick="setTheme('light')" class="px-3 py-1 rounded-full text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+                    <i class="fas fa-sun text-xs"></i> 白色版
+                </button>
+            </div>
+            
+            <a id="btn-open-raw" href="./slides/slide_dark_01_intro.png" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-slate-900 hover:bg-slate-200 text-xs font-bold transition-all">
+                <i class="fas fa-up-right-from-square"></i> 開啟原圖 (1920x1080)
+            </a>
+        </div>
+    </header>
+
+    <!-- Slide Carousel / Viewer -->
+    <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-8 flex flex-col justify-center space-y-6">
+
+        <!-- Theme Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm font-bold">
+            <button onclick="goToSlide(0)" class="tab-btn px-4 py-2 rounded-xl border border-rose-500/50 bg-rose-950/40 text-rose-300" data-index="0">
+                1. 自我介紹
+            </button>
+            <button onclick="goToSlide(1)" class="tab-btn px-4 py-2 rounded-xl border border-slate-800 bg-[#0d121c] text-slate-400 hover:text-white" data-index="1">
+                2. 實績：帳務與資料
+            </button>
+            <button onclick="goToSlide(2)" class="tab-btn px-4 py-2 rounded-xl border border-slate-800 bg-[#0d121c] text-slate-400 hover:text-white" data-index="2">
+                3. 實績：AI 與自動化
+            </button>
+            <button onclick="goToSlide(3)" class="tab-btn px-4 py-2 rounded-xl border border-slate-800 bg-[#0d121c] text-slate-400 hover:text-white" data-index="3">
+                4. 實績：流程與活動
+            </button>
+            <button onclick="goToSlide(4)" class="tab-btn px-4 py-2 rounded-xl border border-slate-800 bg-[#0d121c] text-slate-400 hover:text-white" data-index="4">
+                5. 學經歷時間軸
+            </button>
+            <button onclick="goToSlide(5)" class="tab-btn px-4 py-2 rounded-xl border border-slate-800 bg-[#0d121c] text-slate-400 hover:text-white" data-index="5">
+                6. 證照與技能
+            </button>
+        </div>
+
+        <!-- 16:9 Image Display Card -->
+        <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-black aspect-video flex items-center justify-center group">
+            <img id="current-slide-img" src="./slides/slide_dark_01_intro.png" alt="Slide" class="w-full h-full object-contain cursor-zoom-in" onclick="openFullImage()">
+
+            <!-- Previous / Next Overlay Buttons -->
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+                <i class="fas fa-chevron-left text-lg"></i>
+            </button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+                <i class="fas fa-chevron-right text-lg"></i>
+            </button>
+
+            <!-- Bottom Label -->
+            <div id="slide-caption" class="absolute bottom-4 left-1/2 -translate-y-0 -translate-x-1/2 px-4 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-xs font-semibold text-white/90 border border-white/10 pointer-events-none">
+                1 / 6 ｜ 自我介紹
+            </div>
+        </div>
+
+        <!-- Quick Jump Thumbnails -->
+        <div class="grid grid-cols-6 gap-3 pt-2">
+            <div class="thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-rose-500 opacity-100 hover:opacity-100 transition-all" onclick="goToSlide(0)">
+                <img id="thumb-0" src="./slides/slide_dark_01_intro.png" class="w-full h-16 object-cover">
+                <p class="text-[10px] text-center py-1 bg-[#0d121c] text-slate-300">1. 自我介紹</p>
+            </div>
+            <div class="thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all" onclick="goToSlide(1)">
+                <img id="thumb-1" src="./slides/slide_dark_02_admin1.png" class="w-full h-16 object-cover">
+                <p class="text-[10px] text-center py-1 bg-[#0d121c] text-slate-300">2. 帳務與資料</p>
+            </div>
+            <div class="thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all" onclick="goToSlide(2)">
+                <img id="thumb-2" src="./slides/slide_dark_03_admin2.png" class="w-full h-16 object-cover">
+                <p class="text-[10px] text-center py-1 bg-[#0d121c] text-slate-300">3. AI 與自動化</p>
+            </div>
+            <div class="thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all" onclick="goToSlide(3)">
+                <img id="thumb-3" src="./slides/slide_dark_04_admin3.png" class="w-full h-16 object-cover">
+                <p class="text-[10px] text-center py-1 bg-[#0d121c] text-slate-300">4. 流程與活動</p>
+            </div>
+            <div class="thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all" onclick="goToSlide(4)">
+                <img id="thumb-4" src="./slides/slide_dark_05_timeline.png" class="w-full h-16 object-cover">
+                <p class="text-[10px] text-center py-1 bg-[#0d121c] text-slate-300">5. 學經歷時間軸</p>
+            </div>
+            <div class="thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all" onclick="goToSlide(5)">
+                <img id="thumb-5" src="./slides/slide_dark_06_skills.png" class="w-full h-16 object-cover">
+                <p class="text-[10px] text-center py-1 bg-[#0d121c] text-slate-300">6. 證照與技能</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const slideNames = [
+            { key: "01_intro", title: "1 / 6 ｜ 自我介紹" },
+            { key: "02_admin1", title: "2 / 6 ｜ 行政工作實績（一）帳務核銷 ＆ 試算表與資料管理" },
+            { key: "03_admin2", title: "3 / 6 ｜ 行政工作實績（二）AI 客服導入與測試實作" },
+            { key: "04_admin3", title: "4 / 6 ｜ 行政工作實績（三）流程文件、公文合約、活動營運與溝通" },
+            { key: "05_timeline", title: "5 / 6 ｜ 學經歷時間軸（總年資 6~7 年）" },
+            { key: "06_skills", title: "6 / 6 ｜ 證照與技能（專業資格、工具、語言能力）" }
+        ];
+
+        let currentTheme = 'dark';
+        let currentIndex = 0;
+
+        function updateSlide() {
+            const slide = slideNames[currentIndex];
+            const imgSrc = `./slides/slide_${currentTheme}_${slide.key}.png`;
+            
+            document.getElementById('current-slide-img').src = imgSrc;
+            document.getElementById('slide-caption').textContent = slide.title;
+            document.getElementById('btn-open-raw').href = imgSrc;
+
+            // Update tabs
+            document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+                if (idx === currentIndex) {
+                    btn.className = "tab-btn px-4 py-2 rounded-xl border border-rose-500 bg-rose-950/50 text-rose-300 font-bold";
+                } else {
+                    btn.className = "tab-btn px-4 py-2 rounded-xl border border-slate-800 bg-[#0d121c] text-slate-400 hover:text-white font-medium";
+                }
+            });
+
+            // Update thumbnails
+            document.querySelectorAll('.thumb-card').forEach((card, idx) => {
+                if (idx === currentIndex) {
+                    card.className = "thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-rose-500 opacity-100 transition-all";
+                } else {
+                    card.className = "thumb-card cursor-pointer rounded-lg overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all";
+                }
+                const img = document.getElementById(`thumb-${idx}`);
+                if (img) {
+                    img.src = `./slides/slide_${currentTheme}_${slideNames[idx].key}.png`;
+                }
+            });
+        }
+
+        function setTheme(theme) {
+            currentTheme = theme;
+            const btnDark = document.getElementById('btn-dark');
+            const btnLight = document.getElementById('btn-light');
+
+            if (theme === 'dark') {
+                btnDark.className = "px-3 py-1 rounded-full bg-rose-600 text-white transition-all flex items-center gap-1.5";
+                btnLight.className = "px-3 py-1 rounded-full text-slate-300 hover:text-white transition-all flex items-center gap-1.5";
+                document.body.className = "bg-[#07090e] text-slate-100 min-h-screen flex flex-col transition-colors";
+            } else {
+                btnLight.className = "px-3 py-1 rounded-full bg-rose-600 text-white transition-all flex items-center gap-1.5";
+                btnDark.className = "px-3 py-1 rounded-full text-slate-300 hover:text-white transition-all flex items-center gap-1.5";
+                document.body.className = "bg-[#f1f5f9] text-slate-800 min-h-screen flex flex-col transition-colors";
+            }
+            updateSlide();
+        }
+
+        function goToSlide(idx) {
+            currentIndex = idx;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slideNames.length) % slideNames.length;
+            updateSlide();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slideNames.length;
+            updateSlide();
+        }
+
+        function openFullImage() {
+            const slide = slideNames[currentIndex];
+            const imgSrc = `./slides/slide_${currentTheme}_${slide.key}.png`;
+            window.open(imgSrc, '_blank');
+        }
+
+        // Keyboard arrows navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+    </script>
+</body>
+</html>

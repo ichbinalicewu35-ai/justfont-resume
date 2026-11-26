@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rainbow: {
+                            red: '#FF0055',
+                            redDark: '#E11D48',
+                            orange: '#FF6B00',
+                            orangeDark: '#EA580C',
+                            yellow: '#FFD100',
+                            yellowDark: '#D97706',
+                            green: '#00F5D4',
+                            greenDark: '#0D9488',
+                            blue: '#0088FF',
+                            blueDark: '#2563EB',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Comfortaa', 'OpenHuninn', 'GenSenRounded', 'sans-serif'],
+                        body: ['Quicksand', 'OpenHuninn', 'GenSenRounded', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'OpenHuninn';
+            src: url('../fonts/jf-openhuninn-2.1.ttf') format('truetype');
+            font-weight: 400 700;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-R.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-M.otf') format('opentype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-B.otf') format('opentype');
+            font-weight: 700;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-H.otf') format('opentype');
+            font-weight: 800 900;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            background-color: #07090e;
+            color: #e2e8f0;
+            font-family: 'Quicksand', 'OpenHuninn', 'GenSenRounded', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .slide-container {
+            width: 1920px;
+            height: 1080px;
+            box-sizing: border-box;
+            padding: 48px 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        p.indent {
+            text-indent: 2em;
+        }
+        .solid-dot-blue { background-color: #0088FF; border: none !important; }
+        .solid-dot-green { background-color: #00F5D4; border: none !important; }
+        .solid-dot-yellow { background-color: #FFD100; border: none !important; }
+        .solid-dot-red { background-color: #FF0055; border: none !important; }
+    </style>
+</head>
+<body class="dark">
+
+<div class="slide-container">
+    <!-- Header -->
+    <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+            <h2 class="font-heading text-3xl font-black text-rainbow-blue">證照與技能</h2>
+            <span class="text-lg font-bold text-white">專業檢定證照、語言能力與擅長工具應用</span>
+        </div>
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950/60 text-blue-300 border border-blue-900/60">
+            專業資格認證
+        </span>
+    </div>
+
+    <!-- 3 大欄位 -->
+    <div class="grid grid-cols-3 gap-6 my-auto items-stretch">
+
+        <!-- 欄位 1: 資格認證 -->
+        <div class="rounded-2xl border bg-[#0d121c] border-slate-800 p-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2.5 font-heading text-xl font-bold text-white">
+                    <div class="w-8 h-8 rounded-lg bg-amber-950/60 text-rainbow-yellow flex items-center justify-center text-sm">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <span>專業資格認證</span>
+                </div>
+                
+                <ul class="text-[13px] text-slate-300 space-y-3">
+                    <li class="p-2.5 rounded-lg bg-[#111622] border border-slate-800">
+                        <strong class="text-white block text-[14px]">普通小型車駕照</strong>
+                        <span class="text-xs text-slate-400">中華民國交通部公路總局 4011510151103<br>（有效期限 2026/10 ～ 2065/12）</span>
+                    </li>
+                    <li class="p-2.5 rounded-lg bg-[#111622] border border-slate-800">
+                        <strong class="text-white block text-[14px]">TOEIC 多益測驗 860 分</strong>
+                        <span class="text-xs text-slate-400">聽力 465 / 閱讀 395（2019）</span>
+                    </li>
+                    <li class="p-2.5 rounded-lg bg-[#111622] border border-slate-800">
+                        <strong class="text-white block text-[14px]">FLPT 德語檢定</strong>
+                        <span class="text-xs text-slate-400">筆試 237分 (B2) / 口試 S2 (B1)（2019）</span>
+                    </li>
+                    <li class="p-2.5 rounded-lg bg-[#111622] border border-slate-800">
+                        <strong class="text-white block text-[14px]">全方位基礎人力資源管理師認證</strong>
+                        <span class="text-xs text-slate-400">社團法人中華人力資源管理協會</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 欄位 2: 擅長工具 -->
+        <div class="rounded-2xl border bg-[#0d121c] border-slate-800 p-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2.5 font-heading text-xl font-bold text-white">
+                    <div class="w-8 h-8 rounded-lg bg-teal-950/60 text-rainbow-green flex items-center justify-center text-sm">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <span>擅長工具與應用</span>
+                </div>
+
+                <div class="space-y-4 text-[13px] text-slate-300">
+                    <div class="space-y-2">
+                        <strong class="text-white block text-[14px]">辦公室應用：</strong>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Excel (樞紐/IF/COUNTIF/XLOOKUP)</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-white font-semibold">Word (合併列印批次作業)</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-white">PowerPoint (簡報視覺化)</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-white">Outlook</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <strong class="text-white block text-[14px]">數位與協作平台：</strong>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-teal-300 font-semibold">Dify (AI 工作流與知識庫)</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-white">Google Meet (百人視訊)</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-white">LINE@ 官方帳號</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-800 text-white">Kahoot! 互動機制</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-3 rounded-lg text-xs bg-slate-900 text-slate-400">
+                <i class="fas fa-keyboard text-teal-500 mr-1.5"></i> 熟練 Office 自動化串接與雲端協同作業工具。
+            </div>
+        </div>
+
+        <!-- 欄位 3: 語言能力與求職條件 -->
+        <div class="rounded-2xl border bg-[#0d121c] border-slate-800 p-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2.5 font-heading text-xl font-bold text-white">
+                    <div class="w-8 h-8 rounded-lg bg-rose-950/60 text-rainbow-red flex items-center justify-center text-sm">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <span>語言能力 ＆ 求職條件</span>
+                </div>
+
+                <div class="space-y-4 text-[13px] text-slate-300">
+                    <div class="p-3 rounded-xl bg-[#111622] border border-slate-800 space-y-1.5">
+                        <strong class="text-white block text-[14px]">語言能力：</strong>
+                        <ul class="space-y-1">
+                            <li>・<strong>英文：</strong>聽/中等 說/中等 讀/中等 寫/中等（日常英語工作溝通）</li>
+                            <li>・<strong>德文：</strong>聽/中等 說/中等 讀/中等 寫/中等（雙學士）</li>
+                            <li>・<strong>台語：</strong>略懂</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-[#111622] border border-slate-800 space-y-1.5">
+                        <strong class="text-white block text-[14px]">求職狀態：</strong>
+                        <ul class="space-y-1 text-xs">
+                            <li>・<strong>應徵職稱：</strong>行政營運專員 ｜ 專案執行人員</li>
+                            <li>・<strong>就業狀態：</strong>待業中（錄取後一週可上班）</li>
+                            <li>・<strong>希望地點：</strong>台北市、新北市（對遠端工作有意願）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 rounded-lg text-xs bg-slate-900 text-slate-400 flex justify-between items-center">
+                <span><i class="fas fa-envelope text-rose-500 mr-1.5"></i> ichbinalicewu35@gmail.com</span>
+                <span>0958-321-139</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Slide Footer -->
+    <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-slate-400 text-sm font-medium">
+        <div class="flex items-center gap-6">
+            <span>吳思穎 Alice Wu ｜ 應徵 justfont 行政營運專員</span>
+            <span><i class="fas fa-phone mr-1"></i> 0958-321-139</span>
+            <span><i class="fas fa-envelope mr-1"></i> ichbinalicewu35@gmail.com</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span>字體：justfont 粉圓體 ＆ 源泉圓體</span>
+            <span class="font-bold font-mono px-2.5 py-0.5 rounded bg-slate-800 text-white">6 / 6</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

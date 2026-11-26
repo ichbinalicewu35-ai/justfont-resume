@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rainbow: {
+                            red: '#FF0055',
+                            redDark: '#E11D48',
+                            orange: '#FF6B00',
+                            orangeDark: '#EA580C',
+                            yellow: '#FFD100',
+                            yellowDark: '#D97706',
+                            green: '#00F5D4',
+                            greenDark: '#0D9488',
+                            blue: '#0088FF',
+                            blueDark: '#2563EB',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Comfortaa', 'OpenHuninn', 'GenSenRounded', 'sans-serif'],
+                        body: ['Quicksand', 'OpenHuninn', 'GenSenRounded', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'OpenHuninn';
+            src: url('../fonts/jf-openhuninn-2.1.ttf') format('truetype');
+            font-weight: 400 700;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-R.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-M.otf') format('opentype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-B.otf') format('opentype');
+            font-weight: 700;
+        }
+        @font-face {
+            font-family: 'GenSenRounded';
+            src: url('../fonts/gensen/GenSenRounded2TW-H.otf') format('opentype');
+            font-weight: 800 900;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: 'Quicksand', 'OpenHuninn', 'GenSenRounded', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .slide-container {
+            width: 1920px;
+            height: 1080px;
+            box-sizing: border-box;
+            padding: 48px 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        p.indent {
+            text-indent: 2em;
+        }
+        .solid-dot-blue { background-color: #2563EB; border: none !important; }
+        .solid-dot-green { background-color: #0D9488; border: none !important; }
+        .solid-dot-yellow { background-color: #D97706; border: none !important; }
+        .solid-dot-red { background-color: #E11D48; border: none !important; }
+    </style>
+</head>
+<body class="">
+
+<div class="slide-container">
+    <!-- Header -->
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+        <div class="flex items-center gap-3">
+            <h2 class="font-heading text-3xl font-black text-amber-600">行政工作實績</h2>
+            <span class="text-lg font-bold text-slate-900">（一）帳務核銷 ＆ 試算表與資料管理</span>
+        </div>
+        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+            環資國際 ｜ 專案執行（約 6 年）實務產出
+        </span>
+    </div>
+
+    <!-- Content: 左右兩欄 -->
+    <div class="grid grid-cols-12 gap-6 my-auto items-stretch">
+        <!-- 左欄: 帳務與核銷 -->
+        <div class="col-span-5 rounded-2xl border bg-white border-slate-200 shadow-sm p-6 flex flex-col justify-between">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2.5 font-heading text-xl font-bold text-slate-900">
+                    <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <span>帳務與核銷</span>
+                </div>
+                <div class="text-[14px] text-slate-700 leading-relaxed space-y-2">
+                    <p class="indent">負責年度說明會（10～15 場）經費的預算編列、預支、請款與核銷，涵蓋場地、餐盒、交通、住宿、郵寄等項目，年度總額約 10 萬元、核銷細項約 100 筆。</p>
+                    <p class="indent">自行設計雲端試算表記帳範本並附填寫說明，由經手同事於活動期間逐筆登錄金額與憑證轉手人員；年底核銷整理時間由約一個工作天縮短至半天內，憑證遺失時可追溯。範本經會計推薦給其他專案參考。</p>
+                </div>
+            </div>
+            <div class="mt-3 rounded-xl overflow-hidden border border-slate-200">
+                <img src="../images/image1.jpeg" class="w-full h-44 object-cover object-top">
+                <div class="p-2 bg-slate-100 dark:bg-[#111622] text-[11px] text-slate-500 flex justify-between">
+                    <span><i class="fas fa-table mr-1 text-orange-500"></i> 雲端試算表記帳範本</span>
+                    <span>隨時掌握預算剩餘金額</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右欄: 試算表與資料管理 -->
+        <div class="col-span-7 rounded-2xl border bg-white border-slate-200 shadow-sm p-6 flex flex-col justify-between">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2.5 font-heading text-xl font-bold text-slate-900">
+                    <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-sm">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <span>試算表與資料管理</span>
+                </div>
+                <div class="text-[13px] text-slate-700 leading-relaxed space-y-1.5">
+                    <p class="indent"><strong class="text-slate-900">excel資料庫與 Word 合併列印：</strong>具備 Excel 樞紐分析、IF、COUNTIF、XLOOKUP使用經驗；建立郵寄資料主清單搭配 Word 合併列印，批次產出活動場地包裹標籤、獎品寄送與行前通知，整合原本分散重複資料，減少批次處理人為錯誤。</p>
+                    <p class="indent"><strong class="text-slate-900">說明會學習成效統計表（四層試算表）：</strong>以自編抽獎流水號串接前後測資料，建立「貼入原始資料即自動計算」試算表，訂定資料比對規則；成效結果由年底統整提前至每場結束即可得出，依答錯率調整下一場重點並完成交接。</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-5 gap-2.5 mt-3">
+                <div class="col-span-2 rounded-lg overflow-hidden border border-slate-200">
+                    <img src="../images/image2.jpeg" class="w-full h-32 object-cover">
+                    <div class="p-1 bg-slate-100 dark:bg-[#111622] text-[10px] text-center text-slate-600">Word 合併列印行前通知</div>
+                </div>
+                <div class="col-span-3 grid grid-cols-4 gap-1.5">
+                    <div class="rounded overflow-hidden border border-slate-200">
+                        <img src="../images/image3.jpeg" class="w-full h-24 object-cover">
+                        <div class="p-0.5 text-center text-[9px] bg-slate-100 dark:bg-[#111622]">圖一 問卷原始</div>
+                    </div>
+                    <div class="rounded overflow-hidden border border-slate-200">
+                        <img src="../images/image4.jpeg" class="w-full h-24 object-cover">
+                        <div class="p-0.5 text-center text-[9px] bg-slate-100 dark:bg-[#111622]">圖二 會後資料</div>
+                    </div>
+                    <div class="rounded overflow-hidden border border-slate-200">
+                        <img src="../images/image5.jpeg" class="w-full h-24 object-cover">
+                        <div class="p-0.5 text-center text-[9px] bg-slate-100 dark:bg-[#111622]">圖三 Kahoot判定</div>
+                    </div>
+                    <div class="rounded overflow-hidden border border-slate-200">
+                        <img src="../images/image6.jpeg" class="w-full h-24 object-cover">
+                        <div class="p-0.5 text-center text-[9px] bg-slate-100 dark:bg-[#111622]">圖四 XLOOKUP</div>
+                    </div>
+                    <div class="col-span-4 text-center text-[11px] text-slate-500 pt-0.5">
+                        <i class="fas fa-layer-group text-amber-500 mr-1"></i> 四層試算表架構：問卷 ➔ 會後資料 ➔ Kahoot對錯 ➔ 前後測自動串接計算
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide Footer -->
+    <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-slate-600 text-sm font-medium">
+        <div class="flex items-center gap-6">
+            <span>吳思穎 Alice Wu ｜ 應徵 justfont 行政營運專員</span>
+            <span><i class="fas fa-phone mr-1"></i> 0958-321-139</span>
+            <span><i class="fas fa-envelope mr-1"></i> ichbinalicewu35@gmail.com</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span>字體：justfont 粉圓體 ＆ 源泉圓體</span>
+            <span class="font-bold font-mono px-2.5 py-0.5 rounded bg-slate-200 text-slate-800">2 / 6</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
