@@ -151,7 +151,7 @@ def create_resume_docx_5pages(output_path, img_dir):
     p_sub2_1.paragraph_format.space_after = Pt(2)
     run_s21 = p_sub2_1.add_run("● excel資料庫與 Word 合併列印批次作業：")
     set_run_font(run_s21, size_pt=10, bold=True, color=RGBColor(15, 23, 42))
-    add_body_p("具備 Excel 樞紐分析、IF、COUNTIF、XLOOKUP使用經驗；建立郵寄資料主清單搭配 Word 合併列印，批次產出活動場地包裹標籤、獎品寄送與行前通知，整合原本分散於各資料夾的重複資料，減少批次處理的人為錯誤。")
+    add_body_p("具備 Excel 樞紐分析、IF、COUNTIF、XLOOKUP使用經驗；Excel資料庫搭配 Word 合併列印功能，批次產出活動場地包裹標籤、獎品寄送與行前通知，整合原本分散於各資料夾的重複資料，利用程式自動化抓取資料，減少批次處理的人為錯誤。")
     add_image_with_caption(os.path.join(img_dir, "image2.jpeg"), "【圖示】郵寄主清單搭配 Word 合併列印產出行前通知與包裹標籤", width=Inches(5.8), space_after=6)
 
     p_note = doc.add_paragraph()
