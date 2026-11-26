@@ -183,7 +183,7 @@ def slide_01_intro(theme):
                 <p class="indent">在過去的工作中，我習慣把重複、容易出錯的事情整理成清楚的流程。例如我設計了說明會核銷的試算表範本，讓年底整理時間從約一個工作天縮短到半天內，後來被會計推薦給其他專案參考；也設計過前後測成效統計表，讓每場結束就能看見結果並調整課程。參與專案 AI 客服導入時，我也學到什麼工作適合交給 AI、什麼工作不必，曾建議某個名單篩選流程用調整邏輯與程式自動化處理即可，確保名單的正確性可控，不必全部交給 LLM，意見後來獲得甲方採納。</p>
                 <p class="indent">我的客服經驗以電話與面對面為主，文字客服、收款與開立發票、合約審閱的實務經驗較少，這幾項我很願意學習，也習慣在遇到沒做過的事時先查資料，再整理成可重複使用的做法。</p>
                 <div class="pt-2 flex items-center justify-between border-t {'border-slate-800' if is_dark else 'border-slate-100'}">
-                    <p class="indent text-sm">隨信附上履歷，期待有機會與您現場面談。</p>
+                    <p class="indent text-sm">期待有機會與您面談。</p>
                     <div class="text-right">
                         <span class="text-xs {'text-slate-400' if is_dark else 'text-slate-500'}">祝 徵才順利</span>
                         <span class="font-heading font-bold text-base {'text-white' if is_dark else 'text-slate-900'} ml-3">吳思穎 Alice</span>
